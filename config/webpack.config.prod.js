@@ -441,9 +441,7 @@ module.exports = {
             },
         }),
         new CompressionPlugin({
-            test: /\.js/,
-            deleteOriginalAssets:true,
-            asset: '[path].gz[query]'
+            test: /\.js/
         }),
         // Inlines the webpack runtime script. This script is too small to warrant
         // a network request.
