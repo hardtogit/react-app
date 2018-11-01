@@ -1,14 +1,29 @@
 import React,{Component} from 'react'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import {TransitionGroup,CSSTransition} from 'react-transition-group';
+import {connect} from 'react-redux'
+// import './index.scss'
 class Index extends Component{
     constructor(props){
         super(props)
         this.state={}
     }
+    componentWillReceiveProps({routing}){
+       console.log(routing)
+    }
+
     render(){
         return(
-            <div>sss</div>
+            <CSSTransition className='slide-left' timeout={3000}>
+                {this.props.children}
+            </CSSTransition>
         )
     }
 }
-export default Index
+const mapStateToProps=(state)=>{
+    return{
+        routing:state.routing
+    }
+}
+
+const mapDispatchToProps=()=>({});
+export default connect(mapStateToProps,mapDispatchToProps)(Index) 
