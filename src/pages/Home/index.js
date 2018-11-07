@@ -7,7 +7,7 @@ class Index extends Component {
     }
     render() {
         return (
-            <div onClick={()=>{this.props.push('/find')}}>首页</div>
+            <div style={{height:'100%',backgroundColor:'blue'}} onClick={()=>{this.props.push('/find')}}>首页</div>
         )
     }
 }
