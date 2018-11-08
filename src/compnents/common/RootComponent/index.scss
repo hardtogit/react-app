@@ -1,37 +1,109 @@
-
-:global {
-  // 进出场动画
-  // 飞入
-  .slide-in-appear {
-    transform: translate3D(100%, 0, 0);
-    transition: all 300ms linear;
-
-    &.slide-in-appear-active {
+.app-container{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%
+}
+.animate-enter,.animate-exit{
+  transition: all 300ms linear;
+}
+//Push动画
+  .slide-push{
+    .animate-enter {
+      transform: translate3D(100%, 0, 0);
+      &.animate-enter-active {
+        transform: translate3D(0, 0, 0);
+      }
+    }
+    .animate-exit {
       transform: translate3D(0, 0, 0);
+      &.animate-exit-active {
+        //opacity: 0.01;
+        transform: translate3D(-100%, 0, 0);
+      }
+    }
+  }
+  .fade-push {
+    .animate-enter {
+      opacity: 0;
+      &.animate-enter-active {
+        opacity: 1;
+      }
+    }
+    .animate-exit {
+      opacity: 1;
+      &.animate-exit-active {
+        opacity: 0;
+      }
+    }
+  }
+  .fade-vertical-push{
+    transition-property: transform;
+    .animate-enter {
+      opacity: 0;
+      transform: translate3d(0, 100%, 0);
+      &.animate-enter-active {
+        opacity: 1;
+        transform: translate3D(0, 0, 0);
+      }
+    }
+    .animate-exit {
+      opacity: 1;
+      transform: translate3D(0, 0, 0);
+      &.animate-exit-active {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0);
+      }
     }
   }
 
-  .slide-in-enter {
-    transform: translate3D(100%, 0, 0);
-    transition: all 300ms linear;
 
-    &.slide-in-enter-active {
+//Pop动画
+  .slide-pop {
+    .animate-enter {
+      transform: translate3D(-100%, 0, 0);
+      &.animate-enter-active {
+        transform: translate3D(0, 0, 0);
+      }
+    }
+    .animate-exit {
+      transform: translate3D(0, 0, 0);
+      &.animate-exit-active {
+        transform: translate3D(100%, 0, 0);
+      }
+    }
+  }
+.fade-pop {
+  .animate-enter {
+    opacity: 0;
+    &.animate-enter-active {
+      opacity: 1;
+    }
+  }
+  .animate-exit {
+    opacity: 1;
+    &.animate-exit-active {
+      opacity: 0;
+    }
+  }
+}
+.fade-vertical-pop{
+  transition-property: transform;
+  .animate-enter {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+    &.animate-enter-active {
+      opacity: 1;
       transform: translate3D(0, 0, 0);
     }
   }
-
-  // 向左滑出
-  .slide-in-leave {
-    position: absolute;
-    left: 0;
-    top: 0;
+  .animate-exit {
     opacity: 1;
     transform: translate3D(0, 0, 0);
-    transition: all 300ms linear;
-
-    &.slide-in-leave-active {
-      opacity: 0.01;
-      transform: translate3D(-100%, 0, 0);
+    &.animate-exit-active {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 100%, 0);
     }
   }
 }
