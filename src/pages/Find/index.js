@@ -1,17 +1,25 @@
-import React,{Component} from 'react'
+import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {goBack} from 'react-router-redux'
+import NavBar from '../../compnents/NavBar'
+
 class Index extends Component {
     render() {
         return (
-            <div style={{height:'100%',backgroundColor:'red'}} onClick={()=>{this.props.push('/home?a=3')}}>发现页面</div>
+            <div  onClick={() => {
+                this.props.pop()
+            }}>
+                <NavBar title='slide'/>
+                发现页面
+            </div>
         )
     }
 }
-const mapStateToProps=()=>({});
-const mapDispatchToProps=(dispatch)=>({
-   push(url){
-       dispatch(goBack(url))
+
+const mapStateToProps = () => ({});
+const mapDispatchToProps = (dispatch) => ({
+    pop(url) {
+        dispatch(goBack(url))
     }
 });
-export default connect(mapStateToProps,mapDispatchToProps)(Index)
+export default connect(mapStateToProps, mapDispatchToProps)(Index)
