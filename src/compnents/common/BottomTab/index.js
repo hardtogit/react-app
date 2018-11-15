@@ -1,9 +1,29 @@
-import React,{Component} from 'react'
+import React from 'react'
 import {Link} from 'react-router'
-export default ()=>{
+import classNames from 'classnames'
+import styles from './index.module.scss'
+export default ({children})=>{
     return(
         <div>
-
+            {children}
+        <div className={styles.tabs}>
+            <Link className={classNames([styles.tab,styles.tabOne])} to='/home/home' activeClassName={styles.active}>
+                <div className={styles.img}></div>
+                <div className={styles.text}>抢购</div>
+            </Link>
+            <Link className={classNames([styles.tab,styles.tabTwo])} to='/home/near' activeClassName={styles.active}>
+                <div className={styles.img}></div>
+                <div className={styles.text}>附近</div>
+            </Link>
+            <Link className={classNames([styles.tab,styles.tabTree])} to='/home/circle' activeClassName={styles.active}>
+                <div className={styles.img}></div>
+                <div className={styles.text}>朋友圈</div>
+            </Link>
+            <Link className={classNames([styles.tab,styles.tabFour])} to='/home/me' activeClassName={styles.active}>
+                <div className={styles.img}></div>
+                <div className={styles.text}>个人中心</div>
+            </Link>
+        </div>
         </div>
         )
 }

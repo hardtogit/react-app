@@ -1,0 +1,19 @@
+.swiperPagination{
+    text-align: center;
+    background-color: #fff;
+    .swipeSlider{
+        display: inline-block;
+        width: 0.05rem;
+        height: 0.05rem;
+        border-radius:0.025rem;
+        background-color: #888;
+        margin-left: 0.05rem;
+        &.active{
+            width: 0.11rem;
+            background-color: #f3344a;
+        }
+        &:first-child{
+            margin-left: 0px;
+        }
+    }
+}

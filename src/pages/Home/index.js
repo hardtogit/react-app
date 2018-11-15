@@ -1,8 +1,8 @@
 import React,{Component} from 'react'
 import {connect} from 'react-redux'
 import {push} from 'react-router-redux'
-import animateType from '../../compnents/common/RootComponent/animateType'
 import styles from './index.module.scss'
+import Swiper from '../../compnents/Swiper'
 class Index extends Component {
     componentDidMount(){
         console.log(this.props)
@@ -11,10 +11,39 @@ class Index extends Component {
         const {changeAnimateType,push}=this.props
         return (
            <div>
-               <h4 className={styles.title} onClick={()=>push('/find?animateType=FADE')}>页面切换动画</h4>
-               <p onClick={()=>{changeAnimateType(animateType.SLIDE);push('/find?animateType=FADE')}}>slide</p>
-               <p onClick={()=>{changeAnimateType(animateType.FADE);push('/find?animateType=FADE')}}>fade</p>
-               <p onClick={()=>{changeAnimateType(animateType.FADE_VERTICAL);push('/find?animateType=FADE')}}>slide-vertical</p>
+               <div className={styles.search}>
+                   <div className={styles.text}>成都</div>
+                   <div className={styles.input} data-role="vehicleSearch">输入关键词</div>
+               </div>
+               <Swiper >
+                   <div key={1} className={styles.slide}>
+                       <img className={styles.img} src='https://bao-image.oss-cn-hangzhou.aliyuncs.com/uploadfile/img/month_180508/201805080846168589.jpg' />
+                   </div>
+                   <div key={2} className={styles.slide}>
+                       <img className={styles.img} src='https://bao-image.oss-cn-hangzhou.aliyuncs.com/uploadfile/img/month_180508/201805080846168589.jpg' />
+                   </div>
+                   <div key={3} className={styles.slide}>
+                       <img className={styles.img} src='https://bao-image.oss-cn-hangzhou.aliyuncs.com/uploadfile/img/month_180508/201805080846168589.jpg' />
+                   </div>
+               </Swiper>
+               <div className={styles.menus}>
+                   <div className={styles.menu}>
+                       <img className={styles.img} src="" alt=""/>
+                       <div className={styles.text}>酒店</div>
+                   </div>
+                   <div className={styles.menu}>
+                       <img className={styles.img} src="" alt=""/>
+                       <div className={styles.text}>餐饮</div>
+                   </div>
+                   <div className={styles.menu}>
+                       <img className={styles.img} src="" alt=""/>
+                       <div className={styles.text}>旅游</div>
+                   </div>
+                   <div className={styles.menu}>
+                       <img className={styles.img} src="" alt=""/>
+                       <div className={styles.text}>休闲</div>
+                   </div>
+               </div>
            </div>
         )
     }
