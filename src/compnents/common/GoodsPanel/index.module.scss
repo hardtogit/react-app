@@ -1,0 +1,15 @@
+.panel{
+  .img{
+    height: 1.78rem;
+    position: relative;
+    img{
+      width: 100%;
+      display: block;
+    }
+    .deadline{
+      position: absolute;
+      bottom: 0;
+
+    }
+  }
+}

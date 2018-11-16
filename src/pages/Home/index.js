@@ -1,6 +1,8 @@
 import React,{Component} from 'react'
 import {connect} from 'react-redux'
 import {push} from 'react-router-redux'
+import classNames from 'classnames'
+import GoodsPanel from '../../compnents/common/GoodsPanel'
 import styles from './index.module.scss'
 import Swiper from '../../compnents/Swiper'
 class Index extends Component {
@@ -44,6 +46,20 @@ class Index extends Component {
                        <div className={styles.text}>休闲</div>
                    </div>
                </div>
+               <div className={styles.types}>
+                   <div className={classNames([styles.type,styles.active]) }>
+                       <div className={styles.label}>限时特卖</div>
+                   </div>
+                   <div className={classNames([styles.type]) }>
+                       <div className={styles.label}>即将售罄</div>
+                   </div>
+                   <div className={classNames([styles.type]) }>
+                       <div className={styles.label}>抢购预告</div>
+                   </div>
+               </div>
+               <GoodsPanel img='https://bao-image.oss-cn-hangzhou.aliyuncs.com/uploadfile/img/month_180508/201805080846168589.jpg'
+                           title='峨眉山山脚温泉酒店'/>
+
            </div>
         )
     }
