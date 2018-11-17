@@ -1,6 +1,6 @@
 import animateType   from '../../compnents/common/RootComponent/animateType'
 const initialState={
-    animateType:animateType.FADE
+    animateType:animateType.SLIDE
 };
 export default (state = initialState, action)=> {
     switch (action.type){

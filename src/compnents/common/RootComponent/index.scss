@@ -1,9 +1,14 @@
 .app-container{
   position:absolute;
+  overflow: scroll;
   top:0;
   left:0;
   width:100%;
   height:100%
+}
+.animateRoot{
+  overflow: hidden;
+  height: 100%;
 }
 .animate-enter,.animate-exit{
   transition: all 300ms linear;

@@ -1,15 +1,114 @@
 .panel{
+  background-color: #fff;
+  padding-bottom: 0.1rem;
+  border-radius: 0.10rem;
+  overflow: hidden;
   .img{
     height: 1.78rem;
     position: relative;
     img{
       width: 100%;
+      height: 100%;
       display: block;
     }
     .deadline{
       position: absolute;
-      bottom: 0;
+      height: 0.18rem;
+      display: flex;
+      left: 0.05rem;
+      bottom:0.05rem;
+      border-bottom-left-radius: 0.09rem;
+      border-top-left-radius: 0.09rem;
+      font-size: 0.09rem;
+      overflow: hidden;
+      width: 1.62rem;
+      .left{
+        flex: 0 0.5rem;
+        line-height: 0.19rem;
+        text-align: center;
+        background-color: #222;
+        background-image: url("../../../assets/img/sale.png");
+        background-size: 100% 100%;
+      }
+      .right{
+        flex: 1;
+        line-height: 0.19rem;
+        background-color: #222;
+        color: #fff;
+        text-align: center;
+        border-bottom-right-radius: 0.09rem;
+        border-top-right-radius: 0.09rem;
+      }
 
+    }
+  }
+  .title{
+    margin-top: 0.10rem;
+    font-weight: normal;
+    padding: 0 0.1rem;
+  }
+  .price{
+    padding: 0 0.1rem;
+    margin-top: 0.1rem;
+    display: flex;
+    align-items: center;
+    .left{
+      flex: 1;
+      color: #f3344a;
+      .oneUnit{
+        font-size: 0.09rem;
+      }
+      .currentPrice{
+        font-size: 0.22rem;
+      }
+      .twoUnit{
+        color: #bbb;
+        margin-left: 0.04rem;
+        position: relative;
+        bottom:0.04rem;
+        text-decoration:line-through;
+        font-size: 0.06rem;
+      }
+      .originalPrice{
+        color: #bbb;
+        bottom:0.04rem;
+        position: relative;
+        text-decoration:line-through;
+        font-size: 0.09rem;
+      }
+      .commission{
+        float: right;
+        display: flex;
+        position: relative;
+        top:0.04rem;
+        border-radius: 0.02rem;
+        border:1px solid #f3344a;
+        .left{
+          background-color: #f3344a;
+          color: #fff;
+          font-size: 0.08rem;
+          text-align: center;
+          padding: 0.02rem 0.02rem;
+        }
+        .right{
+          color:#f3344a ;
+          padding: 0rem 0.02rem;
+          .treeUnit{
+            font-size: 0.07rem;
+          }
+          .num{
+            font-size: 0.10rem;
+          }
+
+
+        }
+      }
+    }
+    .right{
+      flex: 1;
+      font-size: 0.11rem;
+      color: #777;
+      text-align: right;
     }
   }
 }

@@ -3,6 +3,11 @@ import {connect} from 'react-redux'
 import {push} from 'react-router-redux'
 import classNames from 'classnames'
 import GoodsPanel from '../../compnents/common/GoodsPanel'
+import hotel from '../../assets/img/hotel.png'
+import relaxation from '../../assets/img/relaxation.png'
+import repast from '../../assets/img/repast.png'
+import search from '../../assets/img/search.png'
+import travel from '../../assets/img/travel.png'
 import styles from './index.module.scss'
 import Swiper from '../../compnents/Swiper'
 class Index extends Component {
@@ -12,10 +17,13 @@ class Index extends Component {
     render() {
         const {changeAnimateType,push}=this.props
         return (
-           <div>
+           <div className={styles.content}>
                <div className={styles.search}>
                    <div className={styles.text}>成都</div>
-                   <div className={styles.input} data-role="vehicleSearch">输入关键词</div>
+                   <div className={styles.input} data-role="vehicleSearch">
+                       <img className={styles.img} src={search} alt=""/>
+                       输入关键词
+                   </div>
                </div>
                <Swiper >
                    <div key={1} className={styles.slide}>
@@ -30,19 +38,19 @@ class Index extends Component {
                </Swiper>
                <div className={styles.menus}>
                    <div className={styles.menu}>
-                       <img className={styles.img} src="" alt=""/>
+                       <img className={styles.img} src={hotel} alt=""/>
                        <div className={styles.text}>酒店</div>
                    </div>
                    <div className={styles.menu}>
-                       <img className={styles.img} src="" alt=""/>
+                       <img className={styles.img} src={repast} alt=""/>
                        <div className={styles.text}>餐饮</div>
                    </div>
                    <div className={styles.menu}>
-                       <img className={styles.img} src="" alt=""/>
+                       <img className={styles.img} src={travel} alt=""/>
                        <div className={styles.text}>旅游</div>
                    </div>
                    <div className={styles.menu}>
-                       <img className={styles.img} src="" alt=""/>
+                       <img className={styles.img} src={relaxation} alt=""/>
                        <div className={styles.text}>休闲</div>
                    </div>
                </div>
@@ -57,8 +65,55 @@ class Index extends Component {
                        <div className={styles.label}>抢购预告</div>
                    </div>
                </div>
-               <GoodsPanel img='https://bao-image.oss-cn-hangzhou.aliyuncs.com/uploadfile/img/month_180508/201805080846168589.jpg'
-                           title='峨眉山山脚温泉酒店'/>
+               <div className={styles.goods}>
+                   <GoodsPanel
+                       img='https://bao-image.oss-cn-hangzhou.aliyuncs.com/uploadfile/img/month_180508/201805080846168589.jpg'
+                       title='峨眉山山脚温泉酒店'
+                       deadline='12月31日 23:59:59 结束'
+                       style={{marginBottom:'0.1rem'}}
+                       currentPrice='34.56'
+                       originalPrice='86.00'
+                       copies='688'
+                   />
+                   <GoodsPanel
+                       img='https://bao-image.oss-cn-hangzhou.aliyuncs.com/uploadfile/img/month_180508/201805080846168589.jpg'
+                       title='峨眉山山脚温泉酒店'
+                       deadline='12月31日 23:59:59 结束'
+                       style={{marginBottom:'0.1rem'}}
+                       currentPrice='34.56'
+                       originalPrice='86.00'
+                       copies='688'
+                       award={99.45}
+                   />
+                   <GoodsPanel
+                       img='https://bao-image.oss-cn-hangzhou.aliyuncs.com/uploadfile/img/month_180508/201805080846168589.jpg'
+                       title='峨眉山山脚温泉酒店'
+                       deadline='12月31日 23:59:59 结束'
+                       style={{marginBottom:'0.1rem'}}
+                       currentPrice='34.56'
+                       originalPrice='86.00'
+                       copies='688'
+                   />
+                   <GoodsPanel
+                       img='https://bao-image.oss-cn-hangzhou.aliyuncs.com/uploadfile/img/month_180508/201805080846168589.jpg'
+                       title='峨眉山山脚温泉酒店'
+                       deadline='12月31日 23:59:59 结束'
+                       style={{marginBottom:'0.1rem'}}
+                       currentPrice='34.56'
+                       originalPrice='86.00'
+                       copies='688'
+                   />
+                   <GoodsPanel
+                       img='https://bao-image.oss-cn-hangzhou.aliyuncs.com/uploadfile/img/month_180508/201805080846168589.jpg'
+                       title='峨眉山山脚温泉酒店'
+                       deadline='12月31日 23:59:59 结束'
+                       style={{marginBottom:'0.1rem'}}
+                       currentPrice='34.56'
+                       originalPrice='86.00'
+                       copies='688'
+                   />
+               </div>
+
 
            </div>
         )

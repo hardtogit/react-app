@@ -1,8 +1,14 @@
 import React,{Component} from 'react'
 import {TransitionGroup,CSSTransition} from 'react-transition-group';
+import classNames from 'classnames'
 import {connect} from 'react-redux';
 import './index.scss'
 class Index extends Component{
+    constructor(props){
+        super(props)
+        this.state={}
+        this.router=''
+    }
     render(){
         const {routing,animateType}=this.props;
         let animateTypeStr=animateType;
@@ -18,10 +24,18 @@ class Index extends Component{
                 animateClass=`${animateTypeStr}-pop`;
                 break
         }
+        let timeOut=300;
+        if(routing.locationBeforeTransitions.pathname.indexOf('/home')!==-1){
+            if(routing.locationBeforeTransitions.pathname.indexOf('/home')!==-1){
+                 animateClass='';
+                 timeOut=0
+            }
+        }
+        this.router=routing.locationBeforeTransitions.pathname
         return(
             <TransitionGroup className={animateClass}>
                 <CSSTransition  key={this.props.routing.locationBeforeTransitions.key}
-                               timeout={300} classNames={'animate'}>
+                               timeout={timeOut} classNames={'animate'}>
                             <div  className='app-container' >
                                 {this.props.children}
                             </div>
