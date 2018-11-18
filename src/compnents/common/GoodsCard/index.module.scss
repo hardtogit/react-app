@@ -1,0 +1,31 @@
+.card{
+  background-color: #fff;
+  padding-bottom: 0.10rem;
+  border-radius:0.04rem;
+  overflow: hidden;
+  .img{
+    display: block;
+    width: 100%;
+    height: 1.725rem;
+  }
+  .title{
+    margin-top: 0.10rem;
+    font-weight: normal;
+    padding: 0 0.1rem;
+  }
+  .footer{
+    padding: 0 0.1rem;
+    display: flex;
+    .left{
+      flex: 1;
+      text-align: center;
+    }
+    .right{
+      flex: 1;
+      text-align: right;
+      font-size: 0.09rem;
+      color: #777;
+    }
+  }
+
+}

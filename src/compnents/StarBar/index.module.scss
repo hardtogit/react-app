@@ -1,0 +1,15 @@
+.starBar{
+  display: flex;
+  width: 0.72rem;
+  align-items: center;
+  .star{
+    flex: 1;
+    img{
+      width: 0.09rem;
+    }
+  }
+  .text{
+    font-size: 0.09rem;
+    color: #f4334c;
+  }
+}

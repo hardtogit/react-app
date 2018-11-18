@@ -17,7 +17,7 @@ class Index extends Component {
     render() {
         const {changeAnimateType,push}=this.props
         return (
-           <div className={styles.content}>
+           <div classNames={styles.content}>
                <div className={styles.search}>
                    <div className={styles.text}>成都</div>
                    <div className={styles.input} data-role="vehicleSearch">
@@ -27,13 +27,13 @@ class Index extends Component {
                </div>
                <Swiper >
                    <div key={1} className={styles.slide}>
-                       <img className={styles.img} src='https://bao-image.oss-cn-hangzhou.aliyuncs.com/uploadfile/img/month_180508/201805080846168589.jpg' />
+                       <img className={styles.img} src='https://img.meituan.net/msmerchant/799a8a2c28aae03e02b3b906515ac36b1345678.jpg@750w_320h_1e_1c' />
                    </div>
                    <div key={2} className={styles.slide}>
-                       <img className={styles.img} src='https://bao-image.oss-cn-hangzhou.aliyuncs.com/uploadfile/img/month_180508/201805080846168589.jpg' />
+                       <img className={styles.img} src='https://img.meituan.net/msmerchant/799a8a2c28aae03e02b3b906515ac36b1345678.jpg@750w_320h_1e_1c' />
                    </div>
                    <div key={3} className={styles.slide}>
-                       <img className={styles.img} src='https://bao-image.oss-cn-hangzhou.aliyuncs.com/uploadfile/img/month_180508/201805080846168589.jpg' />
+                       <img className={styles.img} src='https://img.meituan.net/msmerchant/799a8a2c28aae03e02b3b906515ac36b1345678.jpg@750w_320h_1e_1c' />
                    </div>
                </Swiper>
                <div className={styles.menus}>
@@ -67,7 +67,7 @@ class Index extends Component {
                </div>
                <div className={styles.goods}>
                    <GoodsPanel
-                       img='https://bao-image.oss-cn-hangzhou.aliyuncs.com/uploadfile/img/month_180508/201805080846168589.jpg'
+                       img='https://img.meituan.net/msmerchant/799a8a2c28aae03e02b3b906515ac36b1345678.jpg@750w_320h_1e_1c'
                        title='峨眉山山脚温泉酒店'
                        deadline='12月31日 23:59:59 结束'
                        style={{marginBottom:'0.1rem'}}
@@ -76,7 +76,7 @@ class Index extends Component {
                        copies='688'
                    />
                    <GoodsPanel
-                       img='https://bao-image.oss-cn-hangzhou.aliyuncs.com/uploadfile/img/month_180508/201805080846168589.jpg'
+                       img='https://img.meituan.net/msmerchant/799a8a2c28aae03e02b3b906515ac36b1345678.jpg@750w_320h_1e_1c'
                        title='峨眉山山脚温泉酒店'
                        deadline='12月31日 23:59:59 结束'
                        style={{marginBottom:'0.1rem'}}
@@ -86,7 +86,7 @@ class Index extends Component {
                        award={99.45}
                    />
                    <GoodsPanel
-                       img='https://bao-image.oss-cn-hangzhou.aliyuncs.com/uploadfile/img/month_180508/201805080846168589.jpg'
+                       img='https://img.meituan.net/msmerchant/799a8a2c28aae03e02b3b906515ac36b1345678.jpg@750w_320h_1e_1c'
                        title='峨眉山山脚温泉酒店'
                        deadline='12月31日 23:59:59 结束'
                        style={{marginBottom:'0.1rem'}}
@@ -95,7 +95,7 @@ class Index extends Component {
                        copies='688'
                    />
                    <GoodsPanel
-                       img='https://bao-image.oss-cn-hangzhou.aliyuncs.com/uploadfile/img/month_180508/201805080846168589.jpg'
+                       img='https://img.meituan.net/msmerchant/799a8a2c28aae03e02b3b906515ac36b1345678.jpg@750w_320h_1e_1c'
                        title='峨眉山山脚温泉酒店'
                        deadline='12月31日 23:59:59 结束'
                        style={{marginBottom:'0.1rem'}}
@@ -104,7 +104,7 @@ class Index extends Component {
                        copies='688'
                    />
                    <GoodsPanel
-                       img='https://bao-image.oss-cn-hangzhou.aliyuncs.com/uploadfile/img/month_180508/201805080846168589.jpg'
+                       img='https://img.meituan.net/msmerchant/799a8a2c28aae03e02b3b906515ac36b1345678.jpg@750w_320h_1e_1c'
                        title='峨眉山山脚温泉酒店'
                        deadline='12月31日 23:59:59 结束'
                        style={{marginBottom:'0.1rem'}}
