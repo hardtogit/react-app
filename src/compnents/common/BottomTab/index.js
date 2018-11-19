@@ -17,11 +17,11 @@ export default ({children})=>{
             </Link>
             <Link className={classNames([styles.tab,styles.tabTree])} to='/home/circle' activeClassName={styles.active}>
                 <div className={styles.img}></div>
-                <div className={styles.text}>朋友圈</div>
+                <div className={styles.text}>素材</div>
             </Link>
             <Link className={classNames([styles.tab,styles.tabFour])} to='/home/me' activeClassName={styles.active}>
                 <div className={styles.img}></div>
-                <div className={styles.text}>个人中心</div>
+                <div className={styles.text}>我的</div>
             </Link>
         </div>
         </div>
