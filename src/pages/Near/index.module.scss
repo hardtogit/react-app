@@ -7,7 +7,7 @@
 }
 .search{
   background-color: #fff;
-  padding: 0.10rem;
+  padding: 0.10rem  0.10rem 0 0.10rem;
   align-items: center;
   display: flex;
   .input{
@@ -30,7 +30,15 @@
 }
 .tabs{
   background-color: #fff;
-  height: 0.27rem;
+  padding-top: 0.1rem;
+  height: 0.37rem;
+  &.fixed{
+    position: fixed;
+    width: 100%;
+    top:0;
+    left: 0;
+    z-index: 10;
+  }
   .tab{
     padding: 0 0.10rem;
     height: 0.27rem;
@@ -40,6 +48,7 @@
     }
     &.active{
       .text{
+        color: #f3344a;
         border-bottom: 0.02rem solid #f3344a;
       }
     }

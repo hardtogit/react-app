@@ -1,0 +1,53 @@
+.panel{
+  display: flex;
+  .left{
+    flex: 0 0.5rem;
+    .headImg{
+      display: block;
+      width: 0.42rem;
+      height: 0.42rem;
+      margin: 0.06rem auto;
+
+    }
+  }
+  .right{
+    flex: 1;
+    padding: 0 0.08rem;
+    .title{
+      color: #111;
+      font-size: 0.18rem;
+      margin-bottom: 0.12rem;
+    }
+    .content{
+      color: #777;
+      font-size: 0.14rem;
+      margin-bottom:0.12rem;
+    }
+    .imgContainer{
+      display: flex;
+      justify-content: space-between;
+      flex-wrap:wrap;
+      .img{
+        display: block;
+        flex: 0 0.92rem;
+        margin-bottom: 0.12rem;;
+        width: 0.92rem;
+        height: 0.92rem;
+      }
+    }
+    .btns{
+      text-align: right;
+      .btn{
+        width: 0.75rem;
+        height: 0.3rem;
+        background-color: #f4334c;
+        display: inline-block;
+        line-height:0.3rem;
+        color: #fff;
+        text-align: center;
+        border-radius: 0.04rem;
+        margin-left: 0.085rem;
+      }
+    }
+  }
+}
