@@ -17,7 +17,7 @@ class Index extends Component {
     render() {
         const {changeAnimateType,push}=this.props
         return (
-           <div classNames={styles.content}>
+           <div className={styles.content}>
                <div className={styles.search}>
                    <div className={styles.text}>成都</div>
                    <div className={styles.input} data-role="vehicleSearch">
@@ -25,7 +25,7 @@ class Index extends Component {
                        输入关键词
                    </div>
                </div>
-               <Swiper >
+               <Swiper>
                    <div key={1} className={styles.slide}>
                        <img className={styles.img} src='https://img.meituan.net/msmerchant/799a8a2c28aae03e02b3b906515ac36b1345678.jpg@750w_320h_1e_1c' />
                    </div>
@@ -74,6 +74,7 @@ class Index extends Component {
                        currentPrice='34.56'
                        originalPrice='86.00'
                        copies='688'
+                       onClick={()=>{push('/goodsDetail')}}
                    />
                    <GoodsPanel
                        img='https://img.meituan.net/msmerchant/799a8a2c28aae03e02b3b906515ac36b1345678.jpg@750w_320h_1e_1c'

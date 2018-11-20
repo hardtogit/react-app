@@ -1,8 +1,8 @@
 import React from 'react'
 import styles from  './index.module.scss'
-export default ({img,deadline,title,currentPrice,originalPrice,award,copies,style})=>{
+export default ({img,deadline,title,currentPrice,originalPrice,award,copies,style,onClick})=>{
     return(
-        <div className={styles.panel} style={style}>
+        <div className={styles.panel} style={style} onClick={()=>onClick&&onClick()}>
             <div className={styles.img}>
                 <img src={img} alt=""/>
                 <div className={styles.deadline}>

@@ -26,7 +26,7 @@ class Index extends Component{
         }
         let timeOut=300;
         if(routing.locationBeforeTransitions.pathname.indexOf('/home')!==-1){
-            if(routing.locationBeforeTransitions.pathname.indexOf('/home')!==-1){
+            if(this.router.indexOf('/home')!==-1){
                  animateClass='';
                  timeOut=0
             }
