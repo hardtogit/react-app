@@ -11,6 +11,8 @@ import Home from './pages/Home'
 import Near from './pages/Near'
 import Circle  from './pages/Circle'
 import Me from './pages/Me'
+
+import GoodsDetail from './pages/Home/GoodsDetail'
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store=createStore(reducer,composeEnhancers(applyMiddleware(routerMiddleware(browserHistory))))
 const history = syncHistoryWithStore(browserHistory, store);
@@ -26,6 +28,7 @@ class App extends Component {
                       <Route path="circle" component={Circle}></Route>
                       <Route path="me" component={Me}></Route>
                   </Route>
+                  <Route path="goodsDetail" component={GoodsDetail}></Route>
               </Route>
               <Redirect from="*" to="/home/home" />
           </Router>

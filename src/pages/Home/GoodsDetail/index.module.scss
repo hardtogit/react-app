@@ -1,0 +1,52 @@
+.content{
+  width: 100%;
+  overflow: hidden;
+}
+
+.storeInfo{
+  padding:0 0.1rem;
+  background-color: #fff;
+  .container{
+    padding:0.1rem 0;
+    .flex{
+      display: flex;
+      align-items: center;
+      .left{
+        flex:1;
+        .name{
+          font-size: 0.14rem;
+          color:#010101;
+          margin-bottom: 0.08rem;
+        }
+        .time{
+          font-size: 0.11rem;
+          color: #777;
+        }
+        border-right: 0.01rem solid #ddd;
+      }
+      .right{
+        flex: 0 0.45rem;
+        text-align: center;
+        padding-left: 0.10rem;
+        img{
+          width: 0.15rem;
+          height: 0.15rem;
+          display: block;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}
+.title{
+  width: 1.34rem;
+  height: 0.17rem;
+  display: block;
+  margin: 0.15rem auto;
+}
+.subTitle{
+  width: 1.605rem;
+  height: 0.17rem;
+  display: block;
+  margin: 0.15rem auto;
+}

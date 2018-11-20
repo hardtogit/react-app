@@ -40,13 +40,14 @@ class ReactSwiper extends Component{
             style: {
             container: {
                 overflow: 'hidden',
-                visibility: 'hidden',
+                // visibility: 'hidden',
                 position: 'relative',
             },
 
             wrapper: {
                 overflow: 'hidden',
-                position: 'relative'
+                position: 'relative',
+                height: '1.78rem',
             },
 
             child: {
@@ -78,8 +79,11 @@ class ReactSwiper extends Component{
                     this.set(num); 
                   }
             fns()     
-          }
-          this.swipe = Swiper(this.refs.container, swipeOptions); 
+          };
+            setTimeout(()=>{
+                this.swipe = Swiper(this.refs.container, swipeOptions);
+            },300)
+
     }
     componentWillUnmount(){
         if(this.swipe){
