@@ -1,0 +1,28 @@
+.header{
+  background-image: linear-gradient(160deg, #ff0064 20%,#ca00ff 80%);
+  .user{
+    display: flex;
+    align-items: center;
+    .left{
+      flex: 0 0.65rem;
+      text-align: center;
+      .img{
+        width: 0.45rem;
+        height: 0.45rem;
+        display: block;
+        margin: 0 auto;
+        border-radius: 50%;
+      }
+    }
+    .center{
+      flex: 1;
+    }
+  }
+}
+.label{
+  display: flex;
+  align-items: center;
+  .img{
+    margin-right: 0.06rem;
+  }
+}

@@ -1,6 +1,4 @@
 import React ,{Component} from 'react'
-import IScroll from  'iscroll/build/iscroll-probe'
-const functionType=['beforeScrollStart','scrollCancel','scrollStart','scroll','scrollEnd','flick','zoomStart','zoomEnd']
 class Index extends Component{
     constructor(props){
         super(props);
