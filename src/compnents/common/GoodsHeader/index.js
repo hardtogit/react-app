@@ -35,7 +35,7 @@ class Index extends Component{
                     <div className={styles.swipe} ref={(mySwipe)=>{this.mySwipe=mySwipe}}>
                         <div className={styles.swipeWrap}>
                             {imgs.map((img,i)=>{
-                                return <div><img key={i} className="banner" src={img}/></div>
+                                return <div key={i}><img  className="banner" src={img}/></div>
                             })}
                         </div>
                     </div>
@@ -68,7 +68,7 @@ class Index extends Component{
                 <div className={styles.labels}>
                     {
                         labels.map((label,i)=>{
-                            return <span className={styles.label}><img src={labelIcon} alt=""/>{label}</span>
+                            return <span key={i} className={styles.label}><img src={labelIcon} alt=""/>{label}</span>
                         })
                     }
                 </div>

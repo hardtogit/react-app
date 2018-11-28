@@ -1,0 +1,75 @@
+.panel{
+  .orderNo{
+    font-size: 0.11rem;
+    color:#444;
+    padding: 0.08rem 0;
+    border-bottom: 0.01rem solid #ededed;
+  }
+  .goodsInfo{
+    display: flex;
+    padding: 0.06rem 0;
+    border-bottom: 0.01rem solid #ededed;
+    .left{
+      flex: 0 0.9rem;
+      img{
+        width: 0.8rem;
+        height: 0.8rem;
+      }
+    }
+    .right{
+      flex: 1;
+      .popTitle{
+        font-size: 0.14rem;
+        color: #111;
+        margin-bottom: 0.16rem;
+      }
+      .oneUnit{
+        font-size: 0.09rem;
+        color: #f3344a;
+      }
+      .currentPrice{
+        font-size: 0.22rem;
+        color: #f3344a;
+        margin-bottom: 0.06rem;
+      }
+      .twoUnit{
+        color: #bbb;
+        margin-left: 0.04rem;
+        text-decoration:line-through;
+        font-size: 0.06rem;
+      }
+      .originalPrice{
+        color: #bbb;
+        text-decoration:line-through;
+        font-size: 0.09rem;
+      }
+      .flex{
+        display: flex;
+        .left{
+          flex: 1;
+        }
+        .right{
+          flex: 1;
+          font-size: 0.12rem;
+          color: #777;
+          text-align: right;
+        }
+      }
+    }
+  }
+  .bottom{
+    display: flex;
+    height: 0.4rem;
+    align-items: center;
+    .left{
+      flex: 1 1rem;
+      //flex-grow:1;
+      font-size: 0.09rem;
+      color: #333;
+    }
+    .right{
+      flex: 1;
+      text-align: right;
+    }
+  }
+}

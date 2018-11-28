@@ -22,7 +22,7 @@
           font-size: 0.11rem;
           color: #777;
         }
-        border-right: 0.01rem solid #ddd;
+        border-right: 0.01rem solid #ededed;
       }
       .right{
         flex: 0 0.45rem;
@@ -49,4 +49,273 @@
   height: 0.17rem;
   display: block;
   margin: 0.15rem auto;
+}
+.bottom{
+  height: 0.55rem;
+  position: fixed;
+  display: flex;
+  width: 100%;
+  bottom: 0;
+  .left{
+    flex: 1;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    .home{
+      flex: 1;
+      img{
+        display: block;
+        width:0.15rem;
+        height: 0.15rem;
+        margin: 0.04rem auto;
+      }
+      .text{
+        text-align: center;
+        font-size: 0.12rem;
+        color:#444
+      }
+
+    }
+    .service{
+      flex: 1;
+      img{
+        display: block;
+        width:0.15rem;
+        height: 0.15rem;
+        margin: 0.04rem auto;
+      }
+      .text{
+        text-align: center;
+        font-size: 0.12rem;
+        color:#444
+      }
+    }
+  }
+  .right{
+    flex: 1;
+    background-color: #f4334c;
+    height: 100%;
+    line-height: 0.55rem;
+    color: #fff;
+    text-align: center;
+    font-size: 0.18rem;
+  }
+}
+.buyContainer{
+  position: relative;
+  .buyPopup{
+    padding: 0 0.1rem 0.8rem 0.1rem;
+    .close{
+      text-align: right;
+      padding: 0.1rem 0;
+      img{
+        width: 0.18rem;
+        height: 0.18rem;
+      }
+    }
+    .goodsInfo{
+      display: flex;
+      border-bottom: 0.01rem solid #ededed;
+      .left{
+        flex: 0 0.9rem;
+        img{
+          width: 0.8rem;
+          height: 0.8rem;
+          margin: 0 0 0.1rem 0;
+        }
+      }
+      .right{
+        flex: 1;
+        .popTitle{
+          font-size: 0.14rem;
+          color: #111;
+          margin-bottom: 0.16rem;
+        }
+        .oneUnit{
+          font-size: 0.09rem;
+          color: #f3344a;
+        }
+        .currentPrice{
+          font-size: 0.22rem;
+          color: #f3344a;
+          margin-bottom: 0.06rem;
+        }
+        .twoUnit{
+          color: #bbb;
+          margin-left: 0.04rem;
+          text-decoration:line-through;
+          font-size: 0.06rem;
+        }
+        .originalPrice{
+          color: #bbb;
+          text-decoration:line-through;
+          font-size: 0.09rem;
+        }
+        .flex{
+          display: flex;
+          .left{
+            flex: 1;
+          }
+          .right{
+            flex: 1;
+            font-size: 0.12rem;
+            color: #777;
+            text-align: right;
+          }
+        }
+      }
+    }
+    .propertyContainer{
+      padding: 0.06rem 0 0.08rem 0;
+      border-bottom: 0.01rem solid #ededed;
+      .propertyTitle{
+        color: #444;
+        padding-bottom: 0.06rem;
+      }
+      .propertyName{
+        display: inline-block;
+        border-radius: 0.02rem;
+        padding: 0.02rem 0.14rem;
+        border:0.01rem solid #ededed;
+        color: #111;
+        margin-right: 0.1rem;
+        &.active{
+          background-color: #f4334c;
+          color: #fff;
+          border-color: #f4334c;
+        }
+      }
+    }
+    .numFlex{
+      padding: 0.1rem 0;
+      color: #444;
+      display: flex;
+      border-bottom: 0.01rem solid #ededed;
+      .left{
+        flex: 1;
+      }
+      .right{
+        flex: 1;
+        text-align: right;
+        .subtract{
+          display: block;
+          float: right;
+          color: #333;
+          width: 0.18rem;
+          height: 0.18rem;
+          line-height: 0.16rem;
+          text-align: center;
+          border: 0.01rem solid #ededed;
+          border-top-left-radius: 0.02rem;
+          border-bottom-left-radius: 0.02rem;
+          &.disabled{
+            background-color: #ddd;
+            color: #999;
+          }
+        }
+        .number{
+          display: block;
+          float: right;
+          color: #333;
+          font-size: 0.09rem;
+          height: 0.18rem;
+          line-height: 0.18rem;
+          padding: 0 0.03rem;
+          text-align: center;
+          min-width: 0.18rem;
+          border-bottom: 0.01rem solid #ededed;
+          border-top:0.01rem solid #ededed
+        }
+        .add{
+          display: block;
+          float: right;
+          color: #333;
+          width: 0.18rem;
+          height: 0.18rem;
+          line-height: 0.16rem;
+          text-align: center;
+          border: 0.01rem solid #ededed;
+          border-top-right-radius: 0.02rem;
+          border-bottom-right-radius: 0.02rem;
+        }
+      }
+    }
+    .remarkFlex{
+      display: flex;
+      padding: 0.1rem 0;
+      border-bottom: 0.01rem solid #ededed;
+      .left{
+        flex: 1;
+      }
+      .right{
+        flex: 1;
+        text-align: right;
+        input{
+          text-align: right;
+          width: 100%;
+        }
+      }
+    }
+    .amount{
+      padding: 0.1rem 0;
+      text-align: right;
+      border-bottom: 0.01rem solid #ededed;
+      .oneUnit{
+        font-size: 0.09rem;
+        color: #f3344a;
+      }
+      .currentPrice{
+        font-size: 0.16rem;
+        color: #f3344a;
+        margin-bottom: 0.06rem;
+      }
+    }
+    .clause{
+      color: #777;
+      font-size: 0.11rem;
+      margin-top: 0.06rem;
+      img{
+        width: 0.10rem;
+        height: 0.10rem;
+        margin-right: 0.02rem;
+      }
+    }
+  }
+  .buy{
+    position: absolute;
+    width: 100%;
+    height: 0.55rem;
+    bottom: 0;
+    align-items: center;
+    display: flex;
+    box-shadow: 0 1px 6px #ccc;
+    .left{
+      flex: 1;
+      .text{
+        padding-left: 0.1rem;
+        color: #444;
+        font-size: 0.11rem;
+        margin-bottom: 0.04rem;
+      }
+      .oneUnit{
+        padding-left: 0.1rem;
+        font-size: 0.09rem;
+        color: #f3344a;
+      }
+      .currentPrice{
+        font-size: 0.14rem;
+        color: #f3344a;
+        margin-bottom: 0.06rem;
+      }
+    }
+    .right{
+      flex: 1;
+      height: 0.55rem;
+      line-height: 0.55rem;
+      font-size: 0.18rem;
+      text-align: center;
+      background-color: #f4334c;
+      color: #fff;
+    }
+  }
 }

@@ -1,0 +1,38 @@
+.tabs{
+  height: 0.4rem;
+  background-color: #fff;
+  display: flex;
+  .tab{
+    flex: 1;
+    text-align: center;
+    .text{
+      display: inline-block;
+      height: 0.4rem;
+      line-height: 0.4rem;
+      margin: 0 auto;
+    }
+    &.active{
+      .text{
+        border-bottom: 0.015rem solid #f4334c;
+      }
+    }
+  }
+}
+.orderItem{
+  background-color: #fff;
+  padding: 0 0.1rem;
+  margin-top: 0.10rem;
+  .btn{
+    display: inline-block;
+    font-size: 0.12rem;
+    color: #444;
+    padding:0.02rem 0.06rem;
+    border-radius: 0.1rem;
+    border:0.01rem solid #ddd ;
+    margin-left: 0.1rem;
+    &.use{
+      border-color: #f4334c;
+      color: #f4334c;
+    }
+  }
+}

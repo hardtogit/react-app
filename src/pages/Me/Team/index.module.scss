@@ -1,0 +1,20 @@
+.tabs{
+  height: 0.4rem;
+  background-color: #fff;
+  display: flex;
+  .tab{
+    flex: 1;
+    text-align: center;
+    .text{
+      display: inline-block;
+      height: 0.4rem;
+      line-height: 0.4rem;
+      margin: 0 auto;
+    }
+    &.active{
+      .text{
+        border-bottom: 0.015rem solid #f4334c;
+      }
+    }
+  }
+}

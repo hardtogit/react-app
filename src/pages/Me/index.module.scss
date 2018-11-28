@@ -1,8 +1,11 @@
 .header{
-  background-image: linear-gradient(160deg, #ff0064 20%,#ca00ff 80%);
+  position: relative;
+  background-image: linear-gradient(160deg, #ff2270 20%,#f3344a 80%);
+  padding-bottom: 0.10rem;
   .user{
     display: flex;
     align-items: center;
+    padding: 0.15rem 0;
     .left{
       flex: 0 0.65rem;
       text-align: center;
@@ -16,13 +19,114 @@
     }
     .center{
       flex: 1;
+      color: #fff;
+      .vip{
+        display: inline-block;
+        font-size: 0.07rem;
+        padding: 0.01rem 0.02rem;
+        background-color: #ff5d7d;
+        margin-top: 0.06rem;
+      }
+    }
+    .right{
+      flex: 0 0.24rem;
+      img{
+        height:  0.15rem;
+        position: relative;
+        width: 0.09rem
+      }
+    }
+  }
+  .text{
+    text-align: center;
+    font-size: 0.12rem;
+    color: #fff;
+  }
+  .property{
+    font-size: 0.24rem;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 0.15rem;
+  }
+  .withdraw{
+    position: relative;
+    z-index: 2;
+    width: 1.50rem;
+    height: 0.36rem;
+    line-height: 0.36rem;
+    text-align: center;
+    border-radius: 0.18rem;
+    margin: 0 auto;
+    background: linear-gradient(-25deg, #ffc903,#fce900 );
+    box-shadow: 0px 1px 7px  #6eafafaf;
+  }
+  .box{
+    padding: 0 0.10rem;
+    position: absolute;
+    height: 0.26rem;
+    bottom: 0;
+    width: 100%;
+    .inner{
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      border-top-left-radius: 0.04rem;
+      border-top-right-radius: 0.04rem;
     }
   }
 }
-.label{
-  display: flex;
-  align-items: center;
-  .img{
-    margin-right: 0.06rem;
+.amount{
+  padding:0 0.10rem 0.10rem 0.10rem;
+  border-bottom-left-radius: 0.04rem;
+  border-bottom-right-radius: 0.04rem;
+  .items{
+    height: 0.68rem;
+    background-color: #fff;
+    color: #777;
+    .item{
+      width: 33.333%;
+      float: left;
+      height: 0.25rem;
+      margin-top: 0.14rem;
+      .num{
+        font-size: 0.15rem;
+        text-align: center;
+      }
+      .text{
+        text-align: center;
+        font-size: 0.11rem;
+        margin-bottom: 0.04rem;
+      }
+    }
   }
 }
+.grid{
+  padding: 0 0.1rem;
+  .nav{
+    background-color: #fff;
+    padding: 0.1rem 0.15rem;
+    .title{
+      font-size: 0.15rem;
+    }
+    .row{
+      display: flex;
+      align-items: center;
+      justify-items: center;
+      .item{
+        padding: 0.2rem 0;
+        flex: 1;
+        .img{
+          display: block;
+          width: 0.15rem;
+          height: 0.15rem;
+          margin: 0 auto 0.1rem auto;
+        }
+        .text{
+          color: #111;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+

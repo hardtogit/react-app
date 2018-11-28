@@ -1,0 +1,35 @@
+.popup{
+    .bg{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        z-index: 99;
+        background-color: rgb(55, 58, 71);
+        opacity: .9;
+        display: none;
+    }
+    .PopupContainer{
+        position: fixed;
+        width: 100%;
+        bottom:0;
+        z-index: 100;
+        display: none;
+        background-color: #fff;
+        transition: all 300ms linear;
+        transition-property: transform;
+        transform: translate3d(0, 100%, 0);
+    }
+    &.active{
+        .bg{
+            display: block;
+        }
+        .PopupContainer{
+            display: block;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+}

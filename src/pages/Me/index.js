@@ -1,18 +1,21 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {goBack} from 'react-router-redux'
-import BaseText from '../../compnents/BaseText'
+import {goBack,push} from 'react-router-redux'
 import order from '../../assets/img/order.png'
 import qrcode from '../../assets/img/qrcode.png'
 import store from '../../assets/img/store.png'
 import collaborate from '../../assets/img/collaborate.png'
 import inform from '../../assets/img/inform.png'
 import teach from '../../assets/img/teach.png'
+import team from '../../assets/img/team.png'
+import client from '../../assets/img/client.png'
 import introduce from '../../assets/img/introduce.png'
+import arrowRight from '../../assets/img/arrowRight.png'
 import styles from './index.module.scss'
 
 class Index extends Component {
     render() {
+        const {push}=this.props
         return (
             <div className={styles.me}>
                 <div className={styles.header}>
@@ -20,48 +23,83 @@ class Index extends Component {
                         <div className={styles.left}>
                             <img className={styles.img} src={introduce} alt=""/>
                         </div>
-                        <div className={styles.center}></div>
-                        <div className={styles.right}></div>
-
+                        <div className={styles.center}>
+                            <div className={styles.userName}>锅里的鱼丸</div>
+                            <div className={styles.vip}>vip6</div>
+                        </div>
+                        <div className={styles.right}>
+                            <img src={arrowRight} alt=""/>
+                        </div>
                     </div>
-
+                    <div className={styles.text}>总资产（元）</div>
+                    <div className={styles.property}>586888.99</div>
+                    <div className={styles.withdraw} onClick={()=>push('/withdraw')}>提现</div>
+                    <div className={styles.box}>
+                        <div className={styles.inner}></div>
+                    </div>
                 </div>
+                <div className={styles.amount}>
+                    <div className={styles.items}>
+                        <div className={styles.item}>
+                            <div className={styles.text}>可提现金额（元）</div>
+                            <div className={styles.num}>8888.99</div>
+                        </div>
+                        <div className={styles.item}>
+                            <div className={styles.text}>直销奖励（元）</div>
+                            <div className={styles.num}>8888.99</div>
+                        </div>
+                        <div className={styles.item}>
+                            <div className={styles.text}>管理佣金（元）</div>
+                            <div className={styles.num}>8888.99</div>
+                        </div>
+                    </div>
+                </div>
+                <div className={styles.grid}>
                 <div className={styles.nav}>
-                    <BaseText label={<span className={styles.label}>
-                    <img className={styles.img} src={order} alt=""/>
-                    <span>全部订单</span></span> }
-                        borderType='four'
-                    />
-                    <BaseText label={<span className={styles.label}>
-                    <img className={styles.img} src={qrcode} alt=""/>
-                    <span>推广二维码</span></span> }
-                     borderType='four'
-                    />
-                    <BaseText label={<span className={styles.label}>
-                    <img className={styles.img} src={store} alt=""/>
-                    <span>推荐商户</span></span> }
-                              borderType='four'
-                    />
-                    <BaseText label={<span className={styles.label}>
-                    <img className={styles.img} src={collaborate} alt=""/>
-                    <span>加盟合作</span></span> }
-                              borderType='four'
-                    />
-                    <BaseText label={<span className={styles.label}>
-                    <img className={styles.img} src={inform} alt=""/>
-                    <span>通知开关</span></span> }
-                              borderType='four'
-                    />
-                    <BaseText label={<span className={styles.label}>
-                    <img className={styles.img} src={teach} alt=""/>
-                    <span>推广教程</span></span> }
-                              borderType='four'
-                    />
-                    <BaseText label={<span className={styles.label}>
-                    <img className={styles.img} src={introduce} alt=""/>
-                    <span>平台介绍</span></span> }
-                              borderType='four'
-                    />
+                    <div className={styles.title}>其他服务</div>
+                    <div className={styles.row}>
+                         <div className={styles.item} onClick={()=>push('/order')}>
+                             <img className={styles.img} src={order} alt=""/>
+                             <div className={styles.text}>全部订单</div>
+                         </div>
+                        <div className={styles.item} onClick={()=>push('/team')}>
+                            <img className={styles.img} src={team} alt=""/>
+                            <div className={styles.text}>我的团队</div>
+                        </div>
+                        <div className={styles.item}>
+                            <img className={styles.img} src={client} alt=""/>
+                            <div className={styles.text}>客户列表</div>
+                        </div>
+                    </div>
+                    <div className={styles.row}>
+                        <div className={styles.item}>
+                            <img className={styles.img} src={qrcode} alt=""/>
+                            <div className={styles.text}>推广二维码</div>
+                        </div>
+                        <div className={styles.item}>
+                            <img className={styles.img} src={store} alt=""/>
+                            <div className={styles.text}>推荐商户</div>
+                        </div>
+                        <div className={styles.item} onClick={()=>push('/collaborate')}>
+                            <img className={styles.img} src={collaborate} alt=""/>
+                            <div className={styles.text}>加盟合作</div>
+                        </div>
+                    </div>
+                    <div className={styles.row}>
+                        <div className={styles.item}>
+                            <img className={styles.img} src={inform} alt=""/>
+                            <div className={styles.text}>通知开关</div>
+                        </div>
+                        <div className={styles.item} onClick={()=>push('/teach')}>
+                            <img className={styles.img} src={teach} alt=""/>
+                            <div className={styles.text}>推广教程</div>
+                        </div>
+                        <div className={styles.item}>
+                            <img className={styles.img} src={introduce} alt=""/>
+                            <div className={styles.text}>平台介绍</div>
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
         )
@@ -72,6 +110,10 @@ const mapStateToProps = () => ({});
 const mapDispatchToProps = (dispatch) => ({
     pop(url) {
         dispatch(goBack(url))
+    },
+    push(url){
+        dispatch(push(url))
+
     }
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Index)

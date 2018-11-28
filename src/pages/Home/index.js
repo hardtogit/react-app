@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {push} from 'react-router-redux'
 import classNames from 'classnames'
 import GoodsPanel from '../../compnents/common/GoodsPanel'
+import Confirm from '../../compnents/Dialog/Confirm'
 import hotel from '../../assets/img/hotel.png'
 import relaxation from '../../assets/img/relaxation.png'
 import repast from '../../assets/img/repast.png'
@@ -13,6 +14,7 @@ import Swiper from '../../compnents/Swiper'
 class Index extends Component {
     componentDidMount(){
         console.log(this.props)
+        // this.confirm.show({title:'测试',content:'我是测试内容'})
     }
     render() {
         const {changeAnimateType,push}=this.props
@@ -20,7 +22,7 @@ class Index extends Component {
            <div className={styles.content}>
                <div className={styles.search}>
                    <div className={styles.text}>成都</div>
-                   <div className={styles.input} data-role="vehicleSearch">
+                   <div className={styles.input} data-role="vehicleSearch" onClick={()=>push('/search')}>
                        <img className={styles.img} src={search} alt=""/>
                        输入关键词
                    </div>
@@ -114,8 +116,7 @@ class Index extends Component {
                        copies='688'
                    />
                </div>
-
-
+               <Confirm   ref={(confirm)=>{this.confirm=confirm}}/>
            </div>
         )
     }

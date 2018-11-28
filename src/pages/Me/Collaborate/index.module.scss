@@ -1,0 +1,26 @@
+.container{
+  height: 100%;
+  .content{
+    height: 100%;
+    padding:0 0.10rem;
+    background-color: #fff;
+    .cooperation{
+      text-align: right;
+      color: #f4334c;
+      font-size: 0.12rem;
+      padding-top: 0.06rem;
+    }
+  }
+  .submit{
+    position: fixed;
+    width: 100%;
+    height: 0.45rem;
+    line-height: 0.45rem;
+    text-align: center;
+    font-size: 0.18rem;
+    background-color: #f4334c;
+    bottom: 0;
+    color: #fff;
+  }
+}
+

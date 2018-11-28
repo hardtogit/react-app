@@ -19,6 +19,13 @@ body {
   height: 0;
   clear: both;
 }
+input:focus{
+  outline: none;
+  /*border:none*/
+}
+input:-webkit-autofill {
+   -webkit-box-shadow: 0 0 0px 1000px white inset;
+ }
 #root{
   position:absolute;
   width: 100%;

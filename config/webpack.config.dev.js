@@ -192,6 +192,7 @@ module.exports = {
           },
         ],
         include: paths.appSrc,
+        exclude: paths.exclude,
       },
       {
         // "oneOf" will traverse all following loaders until one will
@@ -219,7 +220,7 @@ module.exports = {
               customize: require.resolve(
                 'babel-preset-react-app/webpack-overrides'
               ),
-              
+
               plugins: [
                 [
                   require.resolve('babel-plugin-named-asset-import'),
