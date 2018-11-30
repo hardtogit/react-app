@@ -14,6 +14,10 @@ import arrowRight from '../../assets/img/arrowRight.png'
 import styles from './index.module.scss'
 
 class Index extends Component {
+    componentDidMount(){
+        const {getUserInfo}=this.props
+        getUserInfo()
+    }
     render() {
         const {push}=this.props
         return (
@@ -113,7 +117,11 @@ const mapDispatchToProps = (dispatch) => ({
     },
     push(url){
         dispatch(push(url))
-
+    },
+    getUserInfo(){
+        dispatch({
+            type:'USER_INFO'
+        })
     }
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Index)

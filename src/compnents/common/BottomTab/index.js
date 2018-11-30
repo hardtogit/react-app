@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router'
+import {Link,IndexLink} from 'react-router'
 import classNames from 'classnames'
 import styles from './index.module.scss'
 export default ({children})=>{
@@ -7,10 +7,10 @@ export default ({children})=>{
         <div>
             {children}
         <div className={styles.tabs}>
-            <Link className={classNames([styles.tab,styles.tabOne])} to='/home/home' activeClassName={styles.active}>
+            <IndexLink className={classNames([styles.tab,styles.tabOne])} to='/home' activeClassName={styles.active}>
                 <div className={styles.img}></div>
                 <div className={styles.text}>抢购</div>
-            </Link>
+            </IndexLink>
             <Link className={classNames([styles.tab,styles.tabTwo])} to='/home/near' activeClassName={styles.active}>
                 <div className={styles.img}></div>
                 <div className={styles.text}>附近</div>

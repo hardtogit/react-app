@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import {Provider} from 'react-redux'
-import {Router,Redirect,Route,IndexRoute,browserHistory} from 'react-router'
+import {Router,Redirect,Route,IndexRedirect,IndexRoute,browserHistory} from 'react-router'
 import { createStore,applyMiddleware,compose} from 'redux'
+import createSagaMiddleware from 'redux-saga'
 import { syncHistoryWithStore ,routerMiddleware} from 'react-router-redux'
+import 'isomorphic-fetch'
+import 'es6-promise'
 import wx from 'weixin-js-sdk'
 import RootComponent from './compnents/common/RootComponent'
 import BottomTab from './compnents/common/BottomTab'
 import reducer from './store/reducers'
+import rootSaga from './sagas/';
 import './App.css';
 import Home from './pages/Home'
 import Near from './pages/Near'
@@ -24,19 +28,21 @@ import Order from './pages/Me/Order'
 import Team from './pages/Me/Team'
 import Introduce from './pages/Me/Introduce'
 import Teach from './pages/Me/Teach'
-
+const sagaMiddleware = createSagaMiddleware();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store=createStore(reducer,composeEnhancers(applyMiddleware(routerMiddleware(browserHistory))))
+const store=createStore(reducer,composeEnhancers(applyMiddleware(sagaMiddleware,routerMiddleware(browserHistory))));
 const history = syncHistoryWithStore(browserHistory, store);
-console.log(wx)
+sagaMiddleware.run(rootSaga);
+
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
           <Router history={history}>
               <Route  path="/" component={RootComponent}>
+                  <IndexRedirect to="home" />
                   <Route path="home" component={BottomTab}>
-                      <Route path="home" component={Home}></Route>
+                      <IndexRoute component={Home}/>
                       <Route path="near" component={Near}></Route>
                       <Route path="circle" component={Circle}></Route>
                       <Route path="me" component={Me}></Route>
@@ -52,7 +58,7 @@ class App extends Component {
                   <Route path="introduce" component={Introduce}></Route>
                   <Route path="teach" component={Teach}></Route>
               </Route>
-              <Redirect from="*" to="/home/home" />
+              <Redirect from="/*" to="/" />
           </Router>
       </Provider>
     );
