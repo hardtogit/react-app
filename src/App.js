@@ -19,6 +19,7 @@ import Me from './pages/Me';
 //抢购
 import GoodsDetail from './pages/Home/GoodsDetail';
 import Search from './pages/Home/Search';
+import Address from './pages/Home/Address';
 
 //我的
 import Withdraw from './pages/Me/Withdraw';
@@ -49,8 +50,10 @@ class App extends Component {
                       <Route path="circle" component={Circle} />
                       <Route path="me" component={Me} />
                   </Route>
+                  {/*抢购*/}
                   <Route path="goodsDetail" component={GoodsDetail} />
                   <Route path="search" component={Search} />
+                  <Route path="address" component={Address} />
 
                   {/*个人中心*/}
                   <Route path="withdraw" component={Withdraw} />

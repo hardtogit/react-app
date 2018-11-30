@@ -1,17 +1,17 @@
 import Immutable,{Map} from 'immutable';
 import * as actionTypes from '../../actions/actionTypes';
+import actionMap from '../../actions/infoActionMap';
 
-const initialState=Immutable.fromJS({
-    loading:true,
+
+const defaultState=Immutable.fromJS({
+    loading:false,
     data:{}
 });
-export default (state =Map(), action)=> {
+const initState=Object.keys(actionMap).reduce((total,currentValue)=>{return {...total,[currentValue]:defaultState}; },{});
+export default (state =Map(initState), action)=> {
     switch (action.type){
         case actionTypes.FETCH_INFO_DATA_REQUEST:
-            if(state.has(action.key)){
-                return state.setIn([action.key,'loading'],true);
-            }
-            return state.set(action.key,initialState);
+             return state.setIn([action.key,'loading'],true);
         case actionTypes.FETCH_INFO_DATA_SUCCESS:
             return state.setIn([action.key,'data'],action.data).setIn([action.key,'loading'],false);
     }

@@ -21,7 +21,7 @@ class Index extends Component {
         return (
            <div className={styles.content}>
                <div className={styles.search}>
-                   <div className={styles.text}>成都</div>
+                   <div className={styles.text} onClick={()=>push('/Address')}>成都</div>
                    <div className={styles.input} data-role="vehicleSearch" onClick={()=>push('/search')}>
                        <img className={styles.img} src={search} alt=""/>
                        输入关键词

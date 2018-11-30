@@ -1,7 +1,14 @@
-import * as actionTypes from './actionTypes'
-import Fetch from '../request/fetch'
+import * as actionTypes from './actionTypes';
+import Fetch from '../request/fetch';
 export default {
-    [actionTypes.USER_INFO]: {//获取刮刮卡详情
+    //抢购
+    [actionTypes.GET_CITY]: {//获取城市数据
+        apiFn: Fetch.getCity
+    },
+
+
+    //我的
+    [actionTypes.USER_INFO]: {//获取用户信息
         apiFn: Fetch.userInfo
     }
-}
+};

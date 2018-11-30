@@ -1,7 +1,8 @@
 /**
  * Fetch
  */
-import user  from './user';
+import home from './home';
+import me  from './me';
 // const ROOT_URL = '/mobile_api/'
 const ROOT_URL = 'http://pdd.supai.net/wechat/';
 const transferObjectToFormat = (o) => {
@@ -67,5 +68,6 @@ const Fetch = (url, type, data={}, headers) => {
   });
 };
 
-user(Fetch);
+home(Fetch);
+me(Fetch);
 export default Fetch;
