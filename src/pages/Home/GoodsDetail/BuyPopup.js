@@ -1,40 +1,40 @@
-import React,{Component} from 'react'
-import Popup from '../../../compnents/Popup'
-import close from '../../../assets/img/close.png'
-import checked from '../../../assets/img/checked.png'
-import classNames from 'classnames'
-import styles from './index.module.scss'
+import React,{Component} from 'react';
+import Popup from '../../../compnents/Popup';
+import close from '../../../assets/img/close.png';
+import checked from '../../../assets/img/checked.png';
+import classNames from 'classnames';
+import styles from './index.module.scss';
 class Index extends Component{
     constructor(props){
         super(props);
         this.state={
             number:1
-        }
+        };
     }
     show=()=>{
-       this.popup.show()
+       this.popup.show();
     };
     hidden=()=>{
-       this.popup.hidden()
+       this.popup.hidden();
     };
     add=()=>{
         this.setState((state)=>{
             return{
                 number:state.number+1
-            }
-        })
+            };
+        });
     };
     subtract=()=>{
         this.setState((state)=>{
             return{
                 number:state.number===1?1:state.number-1
-            }
-        })
+            };
+        });
     };
     render(){
         const {number}=this.state;
         return(
-            <Popup ref={(popup)=>{this.popup=popup}}>
+            <Popup ref={(popup)=>{this.popup=popup;}}>
                 <div className={styles.buyContainer}>
                 <div className={styles.buyPopup}>
                     <div className={styles.close}>
@@ -108,8 +108,8 @@ class Index extends Component{
                     </div>
                 </div>
             </Popup>
-        )
+        );
     }
 
 }
-export default Index
+export default Index;

@@ -3,7 +3,7 @@
  */
 
 const requests = (Fetch) => {
-    Fetch.userInfo = () => { return Fetch('center.user/info', 'POST') }
+    Fetch.userInfo = () => { return Fetch('center.user/info', 'POST');};
 };
 
-export default requests
+export default requests;
