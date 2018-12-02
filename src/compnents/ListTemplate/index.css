@@ -1,0 +1,67 @@
+.fsLoading{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background-color: #fff;
+}
+.nullIcon{
+    text-align: center;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+}
+.nullIcon img{
+    width: 161px;
+    position: absolute;
+    left:50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform:translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+.block{
+    display: block;
+}
+.hidden{
+    display: none;
+}
+.loading {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    -webkit-transform:translate3d(-50%,-50%,0);
+    -moz-transform:translate3d(-50%,-50%,0);
+    transform:translate3d(-50%,-50%,0);
+    -o-transform:translate3d(-50%,-50%,0);
+}
+.loadingText{
+    font-size: 14px;
+    margin-top: 12px;
+    text-align: center;
+    color: #666;
+}
+.loadingList{
+    text-align: center;
+    padding-top: 8px;
+    margin-bottom: 8px;
+}
+.loadingList .loadingText{
+    margin-top: 2px;
+}
+.loadingEnd{
+    padding: 8px;
+    text-align: center;
+}
+.loadingEndB{
+    display: inline-block;
+    padding: 8px;
+    width: 60%;
+    text-align: center;
+    font-size: 14px;
+    color: #D0D0D0;
+}

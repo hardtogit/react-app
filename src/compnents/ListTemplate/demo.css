@@ -1,0 +1,84 @@
+.findMessage{
+    padding-top: 44px;
+}
+.findMessageHeader{
+    position: relative;
+    z-index: 999;
+}
+.messageContent{
+     background-color: #f0eff5;
+}
+.messageContent .massageList{
+    background-color: #fff;
+    padding-left: 15px;
+}
+.messageContent .massageOne{
+   border-bottom:1px #efefef solid; 
+   position: relative;
+}
+.massageOne .massageTitle{
+    padding:15px 0px 10px 0px; 
+}
+.massageOne .massageIcon{
+    display: inline-block;
+    border-radius: 5px;
+    padding: 5px 8px;
+    font-size: 10px;
+    vertical-align: middle;
+    color: #fff;
+    position: absolute;
+    left: 0px;
+    top: 12px;
+}
+.massageOne .massageNew{
+    display: inline-block;
+    font-size: 16px;
+    padding-left: 50px;
+    word-wrap: break-word;
+    word-break: normal;
+    padding-right: 25px;
+}
+.massageOne .notice{
+    background-color: #f76260;
+}
+.massageOne .system{
+    background-color: #59c5ec;
+}
+.massageOne .massageBody{
+    padding-bottom: 10px;
+    font-size: 12px;
+    color: #aaa;
+    line-height: 18px;
+    padding-right: 32px;
+}
+.massageOne .massagefooter{
+    font-size: 12px;
+    color: #aaa;
+    padding-bottom: 17px; 
+}
+.massageOne .glyphiconChevronRight{
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    margin-top: -9px;
+}
+.massageOne .glyphiconChevronRight:before{
+    content: "";
+    display: inline-block;
+    border-width:12px; 
+    border-color: transparent transparent transparent #ccc;
+    border-style: solid;
+}
+.massageOne .glyphiconChevronRight:after{
+    content: "";
+    display: inline-block;
+    border-width:10px; 
+    border-color: transparent transparent transparent #fff;
+    border-style: solid;
+    position: absolute;
+    right: 5px;
+    top: 2px; 
+}
