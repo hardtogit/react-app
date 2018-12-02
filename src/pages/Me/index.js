@@ -1,35 +1,37 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {goBack,push} from 'react-router-redux'
-import order from '../../assets/img/order.png'
-import qrcode from '../../assets/img/qrcode.png'
-import store from '../../assets/img/store.png'
-import collaborate from '../../assets/img/collaborate.png'
-import inform from '../../assets/img/inform.png'
-import teach from '../../assets/img/teach.png'
-import team from '../../assets/img/team.png'
-import client from '../../assets/img/client.png'
-import introduce from '../../assets/img/introduce.png'
-import arrowRight from '../../assets/img/arrowRight.png'
-import styles from './index.module.scss'
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {goBack,push} from 'react-router-redux';
+import * as actionType from '../../actions/actionTypes';
+import order from '../../assets/img/order.png';
+import qrcode from '../../assets/img/qrcode.png';
+import store from '../../assets/img/store.png';
+import collaborate from '../../assets/img/collaborate.png';
+import inform from '../../assets/img/inform.png';
+import teach from '../../assets/img/teach.png';
+import team from '../../assets/img/team.png';
+import client from '../../assets/img/client.png';
+import introduce from '../../assets/img/introduce.png';
+import arrowRight from '../../assets/img/arrowRight.png';
+import styles from './index.module.scss';
 
 class Index extends Component {
     componentDidMount(){
-        const {getUserInfo}=this.props
-        getUserInfo()
+        const {getUserInfo}=this.props;
+        getUserInfo();
     }
     render() {
-        const {push}=this.props
+        const {push,userInfo}=this.props;
+        console.log(userInfo);
         return (
             <div className={styles.me}>
                 <div className={styles.header}>
                     <div className={styles.user}>
                         <div className={styles.left}>
-                            <img className={styles.img} src={introduce} alt=""/>
+                            <img className={styles.img} src={userInfo.headimgurl} alt=""/>
                         </div>
                         <div className={styles.center}>
-                            <div className={styles.userName}>锅里的鱼丸</div>
-                            <div className={styles.vip}>vip6</div>
+                            <div className={styles.userName}>{userInfo.nickname}</div>
+                            <div className={styles.vip}>vip{userInfo.grade}</div>
                         </div>
                         <div className={styles.right}>
                             <img src={arrowRight} alt=""/>
@@ -39,22 +41,22 @@ class Index extends Component {
                     <div className={styles.property}>586888.99</div>
                     <div className={styles.withdraw} onClick={()=>push('/withdraw')}>提现</div>
                     <div className={styles.box}>
-                        <div className={styles.inner}></div>
+                        <div className={styles.inner} />
                     </div>
                 </div>
                 <div className={styles.amount}>
                     <div className={styles.items}>
                         <div className={styles.item}>
                             <div className={styles.text}>可提现金额（元）</div>
-                            <div className={styles.num}>8888.99</div>
+                            <div className={styles.num}>{userInfo.account&&userInfo.account.balance}</div>
                         </div>
                         <div className={styles.item}>
                             <div className={styles.text}>直销奖励（元）</div>
-                            <div className={styles.num}>8888.99</div>
+                            <div className={styles.num}>{userInfo.account&&userInfo.account.revenue}</div>
                         </div>
                         <div className={styles.item}>
                             <div className={styles.text}>管理佣金（元）</div>
-                            <div className={styles.num}>8888.99</div>
+                            <div className={styles.num}>{userInfo.account&&userInfo.account.revenue2}</div>
                         </div>
                     </div>
                 </div>
@@ -106,22 +108,24 @@ class Index extends Component {
                 </div>
                 </div>
             </div>
-        )
+        );
     }
 }
 
-const mapStateToProps = () => ({});
+const mapStateToProps = (state) => ({
+    userInfo:state.infoData.getIn([actionType.USER_INFO,'data']).data||{}
+});
 const mapDispatchToProps = (dispatch) => ({
     pop(url) {
-        dispatch(goBack(url))
+        dispatch(goBack(url));
     },
     push(url){
-        dispatch(push(url))
+        dispatch(push(url));
     },
     getUserInfo(){
         dispatch({
             type:'USER_INFO'
-        })
+        });
     }
 });
-export default connect(mapStateToProps, mapDispatchToProps)(Index)
+export default connect(mapStateToProps, mapDispatchToProps)(Index);

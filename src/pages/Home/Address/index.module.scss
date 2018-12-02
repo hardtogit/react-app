@@ -1,0 +1,33 @@
+.container{
+  padding: 0.1rem;
+  .title{
+    color: #777;
+    height: 0.4rem;
+    line-height: 0.4rem;
+  }
+  .location{
+    height: 0.4rem;
+    width: 1.05rem;
+    background-color: #fff;
+    border-radius: 0.04rem;
+    line-height: 0.4rem;
+    text-align: center;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    img{
+      width: 0.12rem;
+      height: 0.14rem;
+      margin-right: 0.04rem;
+      position: relative;
+      top:0.02rem
+    }
+  }
+  .hotCity{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.1rem;
+  }
+
+}

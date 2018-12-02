@@ -1,15 +1,15 @@
-import React,{Component} from 'react'
-import {connect} from 'react-redux'
-import search from '../../../assets/img/search.png'
-import styles from './index.module.scss'
-import {push,goBack} from "react-router-redux";
+import React,{Component} from 'react';
+import {connect} from 'react-redux';
+import search from '../../../assets/img/search.png';
+import styles from './index.module.scss';
+import {push,goBack} from 'react-router-redux';
 class Index extends Component{
     constructor(props){
         super(props);
-        this.state={}
+        this.state={};
     }
     render(){
-        const {pop,push}=this.props
+        const {pop,push}=this.props;
         return(
             <div className={styles.content}>
                 <div className={styles.search}>
@@ -26,7 +26,7 @@ class Index extends Component{
                 </div>
 
             </div>
-        )
+        );
     }
 
 }
@@ -36,19 +36,19 @@ const mapStateToProps=()=>({})
 const mapDispatchToProps=(dispatch)=>{
     return{
         push(url){
-            dispatch(push(url))
+            dispatch(push(url));
         },
         pop(){
-            dispatch(goBack())
+            dispatch(goBack());
         },
         changeAnimateType(type){
             dispatch({
                 type:'CHANGE_ANIMATE_TYPE',
                 payload:type
-            })
+            });
         }
-    }
+    };
 
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(Index)
+export default connect(mapStateToProps,mapDispatchToProps)(Index);
