@@ -29,6 +29,7 @@ import Team from './pages/Me/Team';
 import Introduce from './pages/Me/Introduce';
 import Teach from './pages/Me/Teach';
 import Inform from './pages/Me/Inform';
+import Bill from './pages/Me/Bill';
 
 const sagaMiddleware = createSagaMiddleware();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -37,7 +38,9 @@ const history = syncHistoryWithStore(browserHistory, store);
 sagaMiddleware.run(rootSaga);
 //获取url参数设置token
 const queryParams = qs.parse(window.location.href.split('?')[1],{ ignoreQueryPrefix: true });
-sessionStorage.setItem('token',queryParams.token);
+if(queryParams.token){
+    sessionStorage.setItem('token',queryParams.token);
+}
 class App extends Component {
   render() {
     return (
@@ -64,6 +67,7 @@ class App extends Component {
                   <Route path="introduce" component={Introduce} />
                   <Route path="teach" component={Teach} />
                   <Route path="inform" component={Inform} />
+                  <Route path="bill" component={Bill} />
 
               </Route>
               <Redirect from="/*" to="/" />

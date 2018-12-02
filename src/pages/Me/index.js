@@ -46,7 +46,7 @@ class Index extends Component {
                 </div>
                 <div className={styles.amount}>
                     <div className={styles.items}>
-                        <div className={styles.item}>
+                        <div className={styles.item} onClick={()=>push('/bill')}>
                             <div className={styles.text}>可提现金额（元）</div>
                             <div className={styles.num}>{userInfo.account&&userInfo.account.balance}</div>
                         </div>

@@ -1,8 +1,8 @@
-import React,{Component} from 'react'
-import classNames from 'classnames'
-import Config from './config'
-import styles from './index.css'
-import PropTypes from 'prop-types'
+import React,{Component} from 'react';
+import classNames from 'classnames';
+import Config from './config';
+import styles from './index.module.scss';
+import PropTypes from 'prop-types';
 class Scroll extends Component{
     static propTypes={
            height:PropTypes.number,
@@ -44,13 +44,13 @@ class Scroll extends Component{
         titleChild:null
     }
     constructor(props){
-        super(props)
+        super(props);
         this.state={
             init:true,
             allHeight:0,
             loadHeight:0,
             initLoading:false
-        }
+        };
     }
     componentDidMount(){
         this.setState({
@@ -59,36 +59,36 @@ class Scroll extends Component{
             loadHeight:0,
             first:true,
             initLoading:true
-        })
-        this.getListall()
+        });
+        this.getListall();
     }
     componentWillReceiveProps(nextProps){
         if(nextProps.isLoading){
             const loadHeight=this.refs.loadingBox.offsetHeight;
             this.setState({
-              loadHeight,
-            })
+              loadHeight
+            });
         }
     }
     componentDidUpdate(prevProps,prevState){
        const iniTzt=this.state.init;
         if((prevProps.isLoading&&iniTzt)||(!this.state.first&&iniTzt)){
-            const Self=this
+            const Self=this;
              setTimeout(()=>{
-             Self.getListall()
-             },0)
+             Self.getListall();
+             },0);
             if(!this.state.first&&iniTzt){
                 this.setState({
                     first:true
-                })
+                });
             }
         }else if(prevProps.isLoading&&!iniTzt){
              setTimeout(()=>{
              const height=this.refs.listBox.offsetHeight;
               this.setState({
                   allHeight:height
-              })
-             },0)
+              });
+             },0);
         }
     }
     getListall(){
@@ -103,18 +103,18 @@ class Scroll extends Component{
                      this.setState({
                          init:false,
                          allHeight:Height
-                     })
-                     this.addScroll(eventDom)
+                     });
+                     this.addScroll(eventDom);
                   }
            }else{
-               return false
-           };
+               return false;
+           }
     }
     addScroll(Element){
         Element.addEventListener('scroll',()=>{
-            const Top=Element.scrollTop
-                  this.next(Top)
-        })
+            const Top=Element.scrollTop;
+                  this.next(Top);
+        });
     }
     next(top){
         const {distance,height,fetch,endType}=this.props,
@@ -122,28 +122,30 @@ class Scroll extends Component{
                surplus=allHeight+loadHeight-height-top;
                if(!endType){
                   if(surplus<=distance){
-                   fetch()
+                      console.log('ss');
+                   fetch();
                }
                }
     }
     render(){
-        const {children,loading,height,style,fetch,endType,endload,listLoad,listzg,initLoad,nullDom,titleChild} = this.props,
+        const {children,loading,height,style,endType,endload,initLoad,nullDom,titleChild} = this.props,
             {initLoading}=this.state,
-         listArry=[];
-         style.height=height;
+             listArry=[];
              children&&children.map((child,i)=>{
-              listArry.push(React.cloneElement(child))
+              listArry.push(React.cloneElement(child,{key:i}));
             });
+         let copyStyle={...style};
+         copyStyle.height=height;
          let loadType,
              ListDom,
              initLoadDom;
           if (initLoading){
-              initLoadDom=initLoad
+              initLoadDom=initLoad;
           }
           if(!endType){
-             loadType=loading
+             loadType=loading;
           }else if (listArry!=0){
-            loadType=endload
+            loadType=endload;
           }
           if (listArry.length==0&&!titleChild){
               ListDom=nullDom;
@@ -151,8 +153,8 @@ class Scroll extends Component{
               ListDom=listArry;
           }
         return(
-            <div style={style} ref='scrollBox'>
-              <div ref='listBox'>
+            <div style={{...copyStyle}} ref="scrollBox">
+              <div ref="listBox">
               <div>
                   {titleChild}
               {
@@ -165,14 +167,14 @@ class Scroll extends Component{
                  }
               </div>
               </div>
-             <div ref='loadingBox' style={this.state.DomHeight} className={classNames(this.state.init&&!endType&&styles.hidden||styles.block)}>
+             <div ref="loadingBox" style={this.state.DomHeight} className={classNames(this.state.init&&!endType&&styles.hidden||styles.block)}>
                {
                    loadType
                }
               </div>
             </div>
 
-            )
+            );
     }
 }
-export default Scroll
+export default Scroll;

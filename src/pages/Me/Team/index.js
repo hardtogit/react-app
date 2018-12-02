@@ -1,12 +1,12 @@
-import React,{Component} from 'react'
-import classNames from 'classnames'
-import OrderPanel from '../../../compnents/common/OrderPanel'
-import store from '../../../assets/img/store.png'
-import styles from './index.module.scss'
+import React,{Component} from 'react';
+import classNames from 'classnames';
+import OrderPanel from '../../../compnents/common/OrderPanel';
+import store from '../../../assets/img/store.png';
+import styles from './index.module.scss';
 class Index extends Component{
     constructor(props){
         super(props);
-        this.state={}
+        this.state={};
     }
     render(){
         return(
@@ -23,7 +23,7 @@ class Index extends Component{
                     </div>
                 </div>
             </div>
-        )
+        );
     }
 }
-export default Index
+export default Index;

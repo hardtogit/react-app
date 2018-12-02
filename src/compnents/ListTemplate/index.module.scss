@@ -40,18 +40,15 @@
     -o-transform:translate3d(-50%,-50%,0);
 }
 .loadingText{
-    font-size: 14px;
-    margin-top: 12px;
-    text-align: center;
     color: #666;
+    margin-left: 0.04rem;
 }
 .loadingList{
+    display: flex;
     text-align: center;
-    padding-top: 8px;
-    margin-bottom: 8px;
-}
-.loadingList .loadingText{
-    margin-top: 2px;
+    padding: 0.12rem 0;
+    width: 0.8rem;
+    margin: 0 auto;
 }
 .loadingEnd{
     padding: 8px;

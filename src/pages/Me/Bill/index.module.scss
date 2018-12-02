@@ -1,0 +1,58 @@
+
+
+.containerBox{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  .dataList{
+    .dataItem{
+      display: flex;
+      width: 100%;
+      align-items: center;
+      padding: 0.12rem 0.15rem 0.12rem 0.15rem;
+      border-bottom: 0.01rem solid #ddd;
+      .left{
+        flex: 1;
+        .amount{
+          font-size:0.18rem;
+          color:#333;
+        }
+        .time{
+          font-size: 0.12rem;
+          color: #999;
+          margin-top: 0.06rem;
+        }
+
+      }
+      .right{
+        flex: 1;
+        text-align: right;
+        font-size: 0.14rem;
+        .ing{
+          color:#1890ff ;
+        }
+        .success{
+          color: #52c41a;
+        }
+        .fail{
+          color:#f5222d ;
+          .reason{
+            width: 0.15rem;
+            height: 0.15rem;
+            display: inline-block;
+            text-align: center;
+            line-height: 0.15rem;
+            border-radius: 0.50%;
+            background-color: #ddd;
+            color: #f6f6f6;
+          }
+        }
+
+      }
+    }
+  }
+  .noData{
+    margin-top: 4rem;
+  }
+}

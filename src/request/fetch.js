@@ -1,6 +1,7 @@
 /**
  * Fetch
  */
+import qs from 'qs';
 import home from './home';
 import me  from './me';
 // const ROOT_URL = '/mobile_api/'
@@ -35,15 +36,10 @@ const Fetch = (url, type, data={}, headers) => {
           delete options.headers;
       }
       else {
-          options.headers ={
-              // 'Accept-Language': 'zh-CN',
-              // 'Cache-Control': 'no-cache',
-              'Content-Type': 'application/json; charset=UTF-8'
-          };
           if(sessionStorage.getItem('token')){
               data={...data,token:sessionStorage.getItem('token')};
           }
-          options.body =JSON.stringify(data);
+          options.body =qs.stringify(data);
        }
     } else if (type && type.toUpperCase() === 'GET') {
         if(url.indexOf('?')!==-1){

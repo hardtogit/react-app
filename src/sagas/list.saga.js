@@ -14,10 +14,11 @@ function* fetchListData({type: key, params,OtherKey}) {
     type: actionTypes.FETCH_LIST_DATA_REQUEST,
     key: keyWithId
   });
-  const pageNum = yield select(state => state.listdata.getIn([keyWithId, 'curPage'], 0) + 1);
+    const limit = yield select(state => state.listData.getIn([keyWithId, 'limit']));
+  const page = yield select(state => state.listData.getIn([keyWithId, 'page'], 0) + 1);
   const args = params ? params : [];
-  const {response, error} = yield call(actionMap[key].apiFn, pageNum, ...args);
-  if (response.code == 100) {
+  const {response, error} = yield call(actionMap[key].apiFn, page,limit, ...args);
+  if (response.code == 0) {
     yield put({
       type: actionTypes.FETCH_LIST_DATA_SUCCESS,
       key: keyWithId,
