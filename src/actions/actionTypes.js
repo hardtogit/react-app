@@ -1,7 +1,9 @@
 
 /**抢购*/
-export const GOOD_LIST = 'GOOD_LIST';
+export const GET_GOODS = 'GET_GOODS';
 export const GET_CITY='GET_CITY';
+/**附近*/
+export const GOODS_LIST = 'GOODS_LIST';
 
 /**个人*/
 export const USER_INFO = 'USER_INFO';

@@ -28,6 +28,7 @@ import Order from './pages/Me/Order';
 import Team from './pages/Me/Team';
 import Introduce from './pages/Me/Introduce';
 import Teach from './pages/Me/Teach';
+import Inform from './pages/Me/Inform';
 
 const sagaMiddleware = createSagaMiddleware();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -62,6 +63,8 @@ class App extends Component {
                   <Route path="team" component={Team} />
                   <Route path="introduce" component={Introduce} />
                   <Route path="teach" component={Teach} />
+                  <Route path="inform" component={Inform} />
+
               </Route>
               <Redirect from="/*" to="/" />
           </Router>

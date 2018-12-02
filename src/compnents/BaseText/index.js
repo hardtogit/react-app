@@ -1,18 +1,18 @@
-import React from 'react'
-import classNames from 'classnames'
-import PropTypes from 'prop-types'
-import arrowRight from '../../assets/img/arrowRight.png'
-import styles from './index.module.scss'
+import React from 'react';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import arrowRight from '../../assets/img/arrowRight.png';
+import styles from './index.module.scss';
 class BaseText extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
-            value: this.props.defaultValue || '',
-        }
+            value: this.props.defaultValue || ''
+        };
 
-        this.validateRu = this.validateRun.bind(this)
+        this.validateRu = this.validateRun.bind(this);
     }
-    static nameq = "BaseText";
+    static nameq = 'BaseText';
     static propTypes = {
         className: PropTypes.string,
         defaultValue: PropTypes.string,   // 默认值
@@ -23,7 +23,7 @@ class BaseText extends React.Component {
         content: PropTypes.oneOfType([
             PropTypes.string,
             PropTypes.element
-        ]),                                     // 中间内容　
+        ]),                                     // 中间内容
         right: PropTypes.oneOfType([      // 右侧图标
             PropTypes.bool,
             PropTypes.element
@@ -32,22 +32,22 @@ class BaseText extends React.Component {
         onClick: PropTypes.func,         // 点击触发事件
         onChange: PropTypes.func,        // 值发生变化触发事件
         containerStyle: PropTypes.object,
-        contentStyle: PropTypes.object,
+        contentStyle: PropTypes.object
     }
 
     validateRun() {
-        return !this.state.value ? { result: false } : { result: true }
+        return !this.state.value ? { result: false } : { result: true };
     }
 
     setValue(value) {
         if (value) {
-            this.setState({ value })
-            this.props.onChange && this.props.onChange(value)
+            this.setState({ value });
+            this.props.onChange && this.props.onChange(value);
         }
     }
 
     clickHandle = () => {
-        this.props.onClick && this.props.onClick()
+        this.props.onClick && this.props.onClick();
     }
 
     renderLeft() {
@@ -55,18 +55,18 @@ class BaseText extends React.Component {
             <div className={styles.left}>
                 {this.props.label && <span style={this.props.leftStyle} className={styles.leftText}>{this.props.label}</span>}
             </div>
-        )
+        );
     }
 
     renderContent() {
-        const content = this.props.content
-        let children
+        const content = this.props.content;
+        let children;
 
         if (content) {
             if (typeof content == 'object') {
-                children = content
+                children = content;
             } else {
-                children = <span className={styles.contentText} style={this.props.contentStyle}>{content}</span>
+                children = <span className={styles.contentText} style={this.props.contentStyle}>{content}</span>;
             }
         }
 
@@ -74,40 +74,41 @@ class BaseText extends React.Component {
             <div className={classNames(styles.content)}>
                 {children}
             </div>
-        )
+        );
     }
 
     // 右侧显示内容
     renderRight() {
-        const right = this.props.right
+        const right = this.props.right;
 
         if ( right === false )
-            return null
+            return null;
 
         return (
             <div className={styles.right}>
-                { typeof right == 'object' ? right :
-                    <img className={styles.arrowIcon} src={arrowRight} /> }
+                {typeof right == 'object' ? right :
+                    <img className={styles.arrowIcon} src={arrowRight} />}
             </div>
-        )
+        );
     }
 
     render() {
-        const props = this.props
-        const borderType = props.borderType
+        const props = this.props;
+        const borderType = props.borderType;
 
         return (
             <div
                 className={classNames([styles.container, borderType && styles[borderType], props.className])}
-                style={this.props.containerStyle} >
+                style={this.props.containerStyle}
+            >
                 <div className={styles.wrap} onClick={this.clickHandle}>
-                    { this.renderLeft() }
-                    { this.renderContent() }
-                    { this.renderRight() }
+                    {this.renderLeft()}
+                    {this.renderContent()}
+                    {this.renderRight()}
                 </div>
             </div>
-        )
+        );
     }
 }
 
-export default BaseText
+export default BaseText;

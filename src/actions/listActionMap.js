@@ -1,8 +1,8 @@
-import * as actionTypes from './actionTypes'
-import Fetch from '../request/fetch'
+import * as actionTypes from './actionTypes';
+import Fetch from '../request/fetch';
 export default {
 
-    [actionTypes.GOOD_LIST]: {
+    [actionTypes.GOODS_LIST]: {
         apiFn:  Fetch.directInvestProjects
     }
-}
+};

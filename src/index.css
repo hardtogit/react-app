@@ -19,6 +19,9 @@ body {
   height: 0;
   clear: both;
 }
+input{
+  border-color: transparent;
+}
 input:focus{
   outline: none;
   /*border:none*/

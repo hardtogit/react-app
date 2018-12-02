@@ -38,7 +38,7 @@ class Index extends Component {
                         </div>
                     </div>
                     <div className={styles.text}>总资产（元）</div>
-                    <div className={styles.property}>586888.99</div>
+                    <div className={styles.property}>{userInfo.account&&userInfo.account.totalrevenue}</div>
                     <div className={styles.withdraw} onClick={()=>push('/withdraw')}>提现</div>
                     <div className={styles.box}>
                         <div className={styles.inner} />
@@ -55,7 +55,7 @@ class Index extends Component {
                             <div className={styles.num}>{userInfo.account&&userInfo.account.revenue}</div>
                         </div>
                         <div className={styles.item}>
-                            <div className={styles.text}>管理佣金（元）</div>
+                            <div className={styles.text}>待入奖金（元）</div>
                             <div className={styles.num}>{userInfo.account&&userInfo.account.revenue2}</div>
                         </div>
                     </div>
@@ -92,7 +92,7 @@ class Index extends Component {
                         </div>
                     </div>
                     <div className={styles.row}>
-                        <div className={styles.item}>
+                        <div className={styles.item} onClick={()=>push('/inform')}>
                             <img className={styles.img} src={inform} alt=""/>
                             <div className={styles.text}>通知开关</div>
                         </div>
