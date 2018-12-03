@@ -63,7 +63,6 @@ const Fetch = (url, type, data={}, headers) => {
 
   });
 };
-
 home(Fetch);
 me(Fetch);
 export default Fetch;

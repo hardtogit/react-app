@@ -6,5 +6,17 @@ export default {
     },
     [actionTypes.BILL_LIST]: {
         apiFn:  Fetch.billList
+    },
+    [actionTypes.AWARD_ACCEPT_LIST]: {
+        apiFn:  Fetch.awardAcceptList
+    },
+    [actionTypes.AWARD_WAIT_LIST]: {
+        apiFn:  Fetch.awardWaitList
+    },
+    [actionTypes.TEAM_LIST]: {
+        apiFn:  Fetch.teamList
+    },
+    [actionTypes.CLIENT_LIST]: {
+        apiFn:  Fetch.clientList
     }
 };

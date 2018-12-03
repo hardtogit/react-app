@@ -50,11 +50,11 @@ class Index extends Component {
                             <div className={styles.text}>可提现金额（元）</div>
                             <div className={styles.num}>{userInfo.account&&userInfo.account.balance}</div>
                         </div>
-                        <div className={styles.item}>
+                        <div className={styles.item} onClick={()=>{push('/awardAccept');}}>
                             <div className={styles.text}>直销奖励（元）</div>
                             <div className={styles.num}>{userInfo.account&&userInfo.account.revenue}</div>
                         </div>
-                        <div className={styles.item}>
+                        <div className={styles.item} onClick={()=>{push('/awardWait');}}>
                             <div className={styles.text}>待入奖金（元）</div>
                             <div className={styles.num}>{userInfo.account&&userInfo.account.revenue2}</div>
                         </div>
@@ -72,7 +72,7 @@ class Index extends Component {
                             <img className={styles.img} src={team} alt=""/>
                             <div className={styles.text}>我的团队</div>
                         </div>
-                        <div className={styles.item}>
+                        <div className={styles.item} onClick={()=>push('/client')}>
                             <img className={styles.img} src={client} alt=""/>
                             <div className={styles.text}>客户列表</div>
                         </div>

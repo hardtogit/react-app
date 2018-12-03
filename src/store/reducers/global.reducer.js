@@ -9,6 +9,9 @@ export default (state = initialState, action)=> {
             return {...state,animateType:action.payload};
         case 'SAVE_TOKEN':
             return {...state,token:action.payload};
+        case 'SAVE_LOCATION':
+            console.log('ssss')
+            return {...state,location:action.payload};
         default:
             break;
     }

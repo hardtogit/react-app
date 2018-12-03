@@ -1,15 +1,15 @@
 .container{
   height: 100%;
+  background-color: #fff;
   .content{
-    height: 100%;
     padding:0 0.10rem;
-    background-color: #fff;
-    .cooperation{
-      text-align: right;
-      color: #f4334c;
-      font-size: 0.12rem;
-      padding-top: 0.06rem;
-    }
+  }
+  .cooperation{
+    text-align: right;
+    color: #f4334c;
+    font-size: 0.12rem;
+    padding-top: 0.06rem;
+    padding-right: 0.12rem;
   }
   .submit{
     position: fixed;

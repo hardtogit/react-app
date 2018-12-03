@@ -17,6 +17,7 @@ class Index extends Component {
         // this.confirm.show({title:'测试',content:'我是测试内容'})
     }
     render() {
+        console.log(this.props)
         const {changeAnimateType,push}=this.props;
         return (
            <div className={styles.content}>
@@ -121,7 +122,9 @@ class Index extends Component {
         );
     }
 }
-const mapStateToProps=()=>({})
+const mapStateToProps=({global})=>({
+    location:global.location
+    })
 
 ;
 const mapDispatchToProps=(dispatch)=>{

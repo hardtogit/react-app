@@ -1,4 +1,5 @@
-
+/**全局*/
+export const SAVE_LOCATION = 'SAVE_LOCATION';
 /**抢购*/
 export const GET_GOODS = 'GET_GOODS';
 export const GET_CITY='GET_CITY';
@@ -8,6 +9,13 @@ export const GOODS_LIST = 'GOODS_LIST';
 /**个人*/
 export const USER_INFO = 'USER_INFO';
 export const BILL_LIST = 'BILL_LIST';
+export const AWARD_ACCEPT_LIST = 'AWARD_ACCEPT_LIST';
+export const AWARD_WAIT_LIST = 'AWARD_WAIT_LIST';
+export const TEAM_LIST = 'TEAM_LIST';
+export const CLIENT_LIST = 'CLIENT_LIST';
+export const STORE_INVITE_INFO = 'STORE_INVITE_INFO';
+export const JSSDK_CONFIG_INFO = 'JSSDK_CONFIG_INFO';
+
 /**公共*/
 export const FETCH_INFO_DATA_SUCCESS='FETCH_INFO_DATA_SUCCESS';
 export const FETCH_INFO_DATA_FAIL='FETCH_INFO_DATA_FAIL';

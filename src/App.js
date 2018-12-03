@@ -5,7 +5,7 @@ import {Router,Redirect,Route,IndexRedirect,IndexRoute,browserHistory} from 'rea
 import { createStore,applyMiddleware,compose} from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { syncHistoryWithStore ,routerMiddleware} from 'react-router-redux';
-// import wx from 'weixin-js-sdk'
+import * as actionTypes from './actions/actionTypes';
 import RootComponent from './compnents/common/RootComponent';
 import BottomTab from './compnents/common/BottomTab';
 import reducer from './store/reducers';
@@ -30,16 +30,24 @@ import Introduce from './pages/Me/Introduce';
 import Teach from './pages/Me/Teach';
 import Inform from './pages/Me/Inform';
 import Bill from './pages/Me/Bill';
+import AwardAccept from './pages/Me/AwardAccept';
+import AwardWait from './pages/Me/AwardWait';
+import Client from './pages/Me/Client';
+
 
 const sagaMiddleware = createSagaMiddleware();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store=createStore(reducer,composeEnhancers(applyMiddleware(sagaMiddleware,routerMiddleware(browserHistory))));
 const history = syncHistoryWithStore(browserHistory, store);
 sagaMiddleware.run(rootSaga);
-//获取url参数设置token
+
 const queryParams = qs.parse(window.location.href.split('?')[1],{ ignoreQueryPrefix: true });
 if(queryParams.token){
     sessionStorage.setItem('token',queryParams.token);
+    store.dispatch({
+        type:actionTypes.JSSDK_CONFIG_INFO,
+        params:[{url:window.location.href}]
+    });
 }
 class App extends Component {
   render() {
@@ -68,6 +76,9 @@ class App extends Component {
                   <Route path="teach" component={Teach} />
                   <Route path="inform" component={Inform} />
                   <Route path="bill" component={Bill} />
+                  <Route path="awardAccept" component={AwardAccept} />
+                  <Route path="awardWait" component={AwardWait} />
+                  <Route path="client" component={Client} />
 
               </Route>
               <Redirect from="/*" to="/" />

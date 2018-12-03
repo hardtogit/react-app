@@ -122,7 +122,6 @@ class Scroll extends Component{
                surplus=allHeight+loadHeight-height-top;
                if(!endType){
                   if(surplus<=distance){
-                      console.log('ss');
                    fetch();
                }
                }

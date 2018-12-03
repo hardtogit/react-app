@@ -12,5 +12,13 @@ export default {
     //我的
     [actionTypes.USER_INFO]: {//获取用户信息
         apiFn: Fetch.userInfo
-    }
+    },
+    [actionTypes.STORE_INVITE_INFO]: {//推荐店铺
+        apiFn: Fetch.storeInviteInfo
+    },
+    [actionTypes.JSSDK_CONFIG_INFO]: {//推荐店铺
+        apiFn: Fetch.jsSdkConfigInfo
+    },
+
+
 };

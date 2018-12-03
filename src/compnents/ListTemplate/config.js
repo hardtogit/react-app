@@ -6,14 +6,14 @@ class ScrollConfig {
    static loadingInitDom(){
         const Loading=Loaders['BeatLoader'];
         return(<div className={styles.loading}>
-        <Loading color="#00a6e2" size="20px" />
+        <Loading color="#f3344a" size="20px" />
         <p className={styles.loadingText}>加载中...</p>
         </div>);
     }
     static loadingDom(){
        const Loading=Loaders['ClipLoader'];
          return(<div className={styles.loadingList}>
-           <Loading style={{backgroundColor:'#000'}} color="#00a6e2" size="20px" />
+           <Loading style={{backgroundColor:'#000'}} color="#f3344a" size="20px" />
                 <div className={styles.loadingText}>加载中...</div>
         </div>);
     }

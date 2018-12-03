@@ -24,6 +24,8 @@ function* fetchListData({type: key, params,OtherKey}) {
       key: keyWithId,
       data: response.data
     });
+  }else if(response.code===1){
+      window.location.href=response.data.url;
   }
   else {
     yield put({

@@ -1,5 +1,6 @@
-import {put, call, select} from 'redux-saga/effects';
+import {put, call} from 'redux-saga/effects';
 import {takeEvery} from 'redux-saga';
+import wx from 'weixin-js-sdk';
 import actionMap from '../actions/infoActionMap';
 import * as actionTypes from '../actions/actionTypes';
 function* takeRequest (action) {
@@ -15,6 +16,26 @@ function* takeRequest (action) {
     if (response) {
         if(action.id){//当组件会发送多次相同的请求是，根据id避免陷入循环
             response.id = action.id;
+        }
+        if(action.type===actionTypes.JSSDK_CONFIG_INFO&&response.code===0){
+            wx.config({
+                ...response.data
+            });
+            wx.ready(function(){
+               console.log('授权成功');
+                wx.getLocation({
+                    type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
+                    success: function (res) {
+                        put({  // eslint-disable-line
+                            type:actionTypes.SAVE_LOCATION,
+                            payload:{latitude:res.latitude,longitude:res.longitude}
+                        });
+                    }
+                });
+            });
+            wx.error(function(res){
+                 console.log(res);
+            });
         }
         if(response.code===1){
             window.location.href=response.data.url;
