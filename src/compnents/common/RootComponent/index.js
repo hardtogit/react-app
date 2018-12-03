@@ -32,6 +32,7 @@ class Index extends Component{
             }
         }
         this.router=routing.locationBeforeTransitions.pathname
+        console.log(animateClass)
         return(
             <TransitionGroup className={animateClass}>
                 <CSSTransition  key={this.props.routing.locationBeforeTransitions.key}

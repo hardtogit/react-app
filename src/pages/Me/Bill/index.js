@@ -1,5 +1,4 @@
 import React,{Component} from 'react';
-import NavBar
 import ListTempalte from '../../../compnents/ListTemplate';
 import styles from './index.module.scss';
 import * as actionType from '../../../actions/actionTypes';
@@ -17,14 +16,15 @@ class Index extends Component {
         this.setState({
             height:this.listContainer.offsetHeight
         });
-        this.props.getBillList();
     }
-
+    componentWillUnmount(){
+        this.props.clear()
+    }
     render() {
         const {billList,getBillList,pending,pageEnd} = this.props;
         const {height} =this.state;
         return (
-            <div style={{height:'100%',backgroundColor:'red'}} ref={(listContainer)=>{this.listContainer=listContainer;}}>
+            <div style={{height:'100%'}} ref={(listContainer)=>{this.listContainer=listContainer;}}>
                 <ListTempalte height={height} distance={5} fetch={()=>getBillList()} isLoading={pending}
                     endType={pageEnd}
                 >
@@ -78,6 +78,12 @@ const mapDispatchToProps = (dispatch) => ({
             type:actionType.BILL_LIST,
             data:{limit:2}
         });
+    },
+    clear(){
+        dispatch({
+            type:actionType.CLEAR_LIST_DATA,
+            key:actionType.BILL_LIST
+        })
     }
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Index);
