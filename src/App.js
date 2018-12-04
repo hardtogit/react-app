@@ -49,6 +49,12 @@ if(queryParams.token){
         params:[{url:window.location.href}]
     });
 }
+if(sessionStorage.getItem('token')){
+    store.dispatch({
+        type:actionTypes.JSSDK_CONFIG_INFO,
+        params:[{url:window.location.href}]
+    });
+}
 class App extends Component {
   render() {
     return (

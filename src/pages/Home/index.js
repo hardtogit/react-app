@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
 import classNames from 'classnames';
+import * as actionTypes from '../../actions/actionTypes'
 import GoodsPanel from '../../compnents/common/GoodsPanel';
 import Confirm from '../../compnents/Dialog/Confirm';
 import hotel from '../../assets/img/hotel.png';
@@ -14,7 +15,7 @@ import Swiper from '../../compnents/Swiper';
 class Index extends Component {
     componentDidMount(){
         console.log(this.props);
-        // this.confirm.show({title:'测试',content:'我是测试内容'})
+        this.props.getList()
     }
     render() {
         console.log(this.props)
@@ -137,6 +138,12 @@ const mapDispatchToProps=(dispatch)=>{
                 type:'CHANGE_ANIMATE_TYPE',
                 payload:type
             });
+        },
+        getList(){
+            dispatch({
+                type:actionTypes.GOODS_LIST
+            })
+
         }
     };
 

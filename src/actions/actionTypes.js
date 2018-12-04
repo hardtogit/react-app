@@ -1,10 +1,12 @@
 /**全局*/
 export const SAVE_LOCATION = 'SAVE_LOCATION';
+export const SAVE_EXTEND = 'SAVE_EXTEND';
 /**抢购*/
 export const GET_GOODS = 'GET_GOODS';
 export const GET_CITY='GET_CITY';
-/**附近*/
 export const GOODS_LIST = 'GOODS_LIST';
+/**附近*/
+
 
 /**个人*/
 export const USER_INFO = 'USER_INFO';

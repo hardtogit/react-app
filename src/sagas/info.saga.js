@@ -21,18 +21,21 @@ function* takeRequest (action) {
             wx.config({
                 ...response.data
             });
-            wx.ready(function(){
-               console.log('授权成功');
-                wx.getLocation({
-                    type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
-                    success: function (res) {
-                        put({  // eslint-disable-line
-                            type:actionTypes.SAVE_LOCATION,
-                            payload:{latitude:res.latitude,longitude:res.longitude}
-                        });
-                    }
-                });
-            });
+        const res=  yield call(()=>new Promise((resolve,reject)=>{
+               wx.ready(function(){
+                   console.log('授权成功');
+                   wx.getLocation({
+                       type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
+                       success: function (res) {
+                           resolve(res)
+                       }
+                   });
+               });
+           }) );
+        yield put({
+            type:actionTypes.SAVE_LOCATION,
+            payload:{latitude:res.latitude,longitude:res.longitude}
+        });
             wx.error(function(res){
                  console.log(res);
             });
@@ -45,6 +48,11 @@ function* takeRequest (action) {
                 data: response,
                 key: action.type
             });
+            yield put({
+                type:actionTypes.SAVE_EXTEND,
+                payload:response.extend
+            })
+
         }
 
     }else {

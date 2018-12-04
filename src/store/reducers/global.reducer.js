@@ -10,8 +10,9 @@ export default (state = initialState, action)=> {
         case 'SAVE_TOKEN':
             return {...state,token:action.payload};
         case 'SAVE_LOCATION':
-            console.log('ssss')
             return {...state,location:action.payload};
+        case 'SAVE_EXTEND':
+            return {...state,extend:action.payload};
         default:
             break;
     }
