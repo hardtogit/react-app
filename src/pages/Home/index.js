@@ -81,15 +81,16 @@ class Index extends Component {
                        return (
                            <GoodsPanel
                                key={index}
-                               img="https://img.meituan.net/msmerchant/799a8a2c28aae03e02b3b906515ac36b1345678.jpg@750w_320h_1e_1c"
-                               title="峨眉山山脚温泉酒店"
-                               deadline="12月31日 23:59:59 结束"
+                               img={value.cover}
+                               title={value.goodsname}
+                               deadline={value.closetime+'结束'}
                                style={{marginBottom:'0.1rem'}}
                                currentPrice="34.56"
                                originalPrice="86.00"
-                               copies="688"
-                               onClick={()=>{push('/goodsDetail');}}
+                               copies={value.sales}
+                               onClick={()=>{push(`/goodsDetail/${value.id}`);}}
                            />
+
                        );
                    })}
                </div>

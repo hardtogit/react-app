@@ -9,9 +9,11 @@ export default {
         apiFn: Fetch.getGoods
     },
     [actionTypes.GOODS_INFO]: {//获取首页商品
-        apiFn: Fetch.goodsList
+        apiFn: Fetch.goodsInfo
     },
-
+    [actionTypes.GOODS_DETAIL_INFO]: {//获取商品详情
+        apiFn: Fetch.goodsDetailInfo
+    },
     //我的
     [actionTypes.USER_INFO]: {//获取用户信息
         apiFn: Fetch.userInfo

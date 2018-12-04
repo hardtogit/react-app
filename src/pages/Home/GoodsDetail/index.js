@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
-import classNames from 'classnames';
+import * as actionTypes from '../../../actions/actionTypes';
 import phone from '../../../assets/img/phone.png';
 import common  from '../../../assets/img/common.png';
 import goodsDetail from '../../../assets/img/goodsDetail.png';
@@ -11,25 +11,27 @@ import GoodsHeader from '../../../compnents/common/GoodsHeader';
 import BuyPopup from './BuyPopup';
 import styles from './index.module.scss';
 class Index extends Component {
-    componentDidMount(){
-        console.log(this.props);
+    componentDidMount() {
+        const {params:{id},getDetail} = this.props;
+        getDetail({gid:id});
     }
     render() {
-        const {changeAnimateType,push}=this.props;
+        const {detail}=this.props;
+        const labels=['24小时前随时退'];
+        if(detail.isbookin===1){
+            labels.push('需提前预约');
+        }
         return (
            <div className={styles.content}>
                <GoodsHeader
-                   imgs={['https://img.meituan.net/msmerchant/799a8a2c28aae03e02b3b906515ac36b1345678.jpg@750w_320h_1e_1c',
-                       'https://img.meituan.net/msmerchant/799a8a2c28aae03e02b3b906515ac36b1345678.jpg@750w_320h_1e_1c',
-                       'https://img.meituan.net/msmerchant/799a8a2c28aae03e02b3b906515ac36b1345678.jpg@750w_320h_1e_1c',
-                       'https://img.meituan.net/msmerchant/799a8a2c28aae03e02b3b906515ac36b1345678.jpg@750w_320h_1e_1c']}
-                   title="峨眉山山脚温泉酒店"
-                   deadline="12月31日 23:59:59 结束"
+                   imgs={detail.plist||[]}
+                   title={detail.goodsname}
+                   deadline={detail.closetime+'结束'}
                    style={{marginBottom:'0.1rem'}}
                    currentPrice="34.56"
                    originalPrice="86.00"
-                   copies="688"
-                   labels={['24小时提前退','需提前预约']}
+                   copies={detail.sales}
+                   labels={labels}
                />
                <div className={styles.storeInfo}>
                    <div className={styles.container}>
@@ -64,18 +66,18 @@ class Index extends Component {
         );
     }
 }
-const mapStateToProps=()=>({})
-
-;
+const mapStateToProps=({infoData})=>({
+    detail:infoData.getIn([actionTypes.GOODS_DETAIL_INFO,'data']).data||{}
+    });
 const mapDispatchToProps=(dispatch)=>{
     return{
         push(url){
             dispatch(push(url));
         },
-        changeAnimateType(type){
+        getDetail(data){
             dispatch({
-                type:'CHANGE_ANIMATE_TYPE',
-                payload:type
+                type:actionTypes.GOODS_DETAIL_INFO,
+                params:[data]
             });
         }
     };

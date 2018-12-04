@@ -69,7 +69,7 @@ class App extends Component {
                       <Route path="me" component={Me} />
                   </Route>
                   {/*抢购*/}
-                  <Route path="goodsDetail" component={GoodsDetail} />
+                  <Route path="goodsDetail/:id" component={GoodsDetail} />
                   <Route path="search" component={Search} />
                   <Route path="address" component={Address} />
 

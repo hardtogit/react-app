@@ -5,6 +5,7 @@ export const SAVE_EXTEND = 'SAVE_EXTEND';
 export const GET_GOODS = 'GET_GOODS';
 export const GET_CITY='GET_CITY';
 export const GOODS_INFO = 'GOODS_INFO';
+export const GOODS_DETAIL_INFO='GOODS_DETAIL_INFO';
 /**附近*/
 
 
