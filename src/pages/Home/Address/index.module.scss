@@ -29,5 +29,23 @@
     justify-content: space-between;
     margin-bottom: 0.1rem;
   }
+  .city{
+    padding: 0.08rem 0;
+    border-bottom: 0.01rem solid #ededed;
 
+  }
+.indexes{
+  position: fixed;
+  width:0.2rem;
+  top:50%;
+  text-align: center;
+  right: 0;
+  transform: translate3d(0,-50%,0);
+  background-color: #f3f3f3;
+  color: #f4334c;
+  font-size: 0.11rem;
+  .index{
+    margin-bottom: 0.04rem;
+  }
+}
 }
