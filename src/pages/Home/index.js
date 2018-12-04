@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
 import classNames from 'classnames';
-import * as actionTypes from '../../actions/actionTypes'
+import * as actionTypes from '../../actions/actionTypes';
 import GoodsPanel from '../../compnents/common/GoodsPanel';
 import Confirm from '../../compnents/Dialog/Confirm';
 import hotel from '../../assets/img/hotel.png';
@@ -14,12 +14,19 @@ import styles from './index.module.scss';
 import Swiper from '../../compnents/Swiper';
 class Index extends Component {
     componentDidMount(){
-        console.log(this.props);
-        this.props.getList()
+        const {location}=this.props;
+        if(location){
+            this.props.getList({lng:location.longitude,lat:location.latitude});
+        }
+    }
+    componentWillReceiveProps({location}){
+         if(location&&location!==this.props.location){
+             this.props.getList({lng:location.longitude,lat:location.latitude});
+         }
     }
     render() {
-        console.log(this.props)
-        const {changeAnimateType,push}=this.props;
+        console.log(this.props);
+        const {goodsInfo,push}=this.props;
         return (
            <div className={styles.content}>
                <div className={styles.search}>
@@ -70,61 +77,30 @@ class Index extends Component {
                    </div>
                </div>
                <div className={styles.goods}>
-                   <GoodsPanel
-                       img="https://img.meituan.net/msmerchant/799a8a2c28aae03e02b3b906515ac36b1345678.jpg@750w_320h_1e_1c"
-                       title="峨眉山山脚温泉酒店"
-                       deadline="12月31日 23:59:59 结束"
-                       style={{marginBottom:'0.1rem'}}
-                       currentPrice="34.56"
-                       originalPrice="86.00"
-                       copies="688"
-                       onClick={()=>{push('/goodsDetail');}}
-                   />
-                   <GoodsPanel
-                       img="https://img.meituan.net/msmerchant/799a8a2c28aae03e02b3b906515ac36b1345678.jpg@750w_320h_1e_1c"
-                       title="峨眉山山脚温泉酒店"
-                       deadline="12月31日 23:59:59 结束"
-                       style={{marginBottom:'0.1rem'}}
-                       currentPrice="34.56"
-                       originalPrice="86.00"
-                       copies="688"
-                       award={99.45}
-                   />
-                   <GoodsPanel
-                       img="https://img.meituan.net/msmerchant/799a8a2c28aae03e02b3b906515ac36b1345678.jpg@750w_320h_1e_1c"
-                       title="峨眉山山脚温泉酒店"
-                       deadline="12月31日 23:59:59 结束"
-                       style={{marginBottom:'0.1rem'}}
-                       currentPrice="34.56"
-                       originalPrice="86.00"
-                       copies="688"
-                   />
-                   <GoodsPanel
-                       img="https://img.meituan.net/msmerchant/799a8a2c28aae03e02b3b906515ac36b1345678.jpg@750w_320h_1e_1c"
-                       title="峨眉山山脚温泉酒店"
-                       deadline="12月31日 23:59:59 结束"
-                       style={{marginBottom:'0.1rem'}}
-                       currentPrice="34.56"
-                       originalPrice="86.00"
-                       copies="688"
-                   />
-                   <GoodsPanel
-                       img="https://img.meituan.net/msmerchant/799a8a2c28aae03e02b3b906515ac36b1345678.jpg@750w_320h_1e_1c"
-                       title="峨眉山山脚温泉酒店"
-                       deadline="12月31日 23:59:59 结束"
-                       style={{marginBottom:'0.1rem'}}
-                       currentPrice="34.56"
-                       originalPrice="86.00"
-                       copies="688"
-                   />
+                   {goodsInfo.map((value,index)=>{
+                       return (
+                           <GoodsPanel
+                               key={index}
+                               img="https://img.meituan.net/msmerchant/799a8a2c28aae03e02b3b906515ac36b1345678.jpg@750w_320h_1e_1c"
+                               title="峨眉山山脚温泉酒店"
+                               deadline="12月31日 23:59:59 结束"
+                               style={{marginBottom:'0.1rem'}}
+                               currentPrice="34.56"
+                               originalPrice="86.00"
+                               copies="688"
+                               onClick={()=>{push('/goodsDetail');}}
+                           />
+                       );
+                   })}
                </div>
                <Confirm   ref={(confirm)=>{this.confirm=confirm;}}/>
            </div>
         );
     }
 }
-const mapStateToProps=({global})=>({
-    location:global.location
+const mapStateToProps=({global,infoData})=>({
+    location:global.location,
+    goodsInfo:infoData.getIn([actionTypes.GOODS_INFO,'data']).data||[]
     })
 
 ;
@@ -139,10 +115,11 @@ const mapDispatchToProps=(dispatch)=>{
                 payload:type
             });
         },
-        getList(){
+        getList(location){
             dispatch({
-                type:actionTypes.GOODS_LIST
-            })
+                type:actionTypes.GOODS_INFO,
+                params:[{...location,page:1,limit:10}]
+            });
 
         }
     };

@@ -4,7 +4,7 @@ export const SAVE_EXTEND = 'SAVE_EXTEND';
 /**抢购*/
 export const GET_GOODS = 'GET_GOODS';
 export const GET_CITY='GET_CITY';
-export const GOODS_LIST = 'GOODS_LIST';
+export const GOODS_INFO = 'GOODS_INFO';
 /**附近*/
 
 
