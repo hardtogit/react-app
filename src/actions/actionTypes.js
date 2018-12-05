@@ -7,6 +7,7 @@ export const GET_GOODS = 'GET_GOODS';
 export const GET_CITY='GET_CITY';
 export const GOODS_INFO = 'GOODS_INFO';
 export const GOODS_DETAIL_INFO='GOODS_DETAIL_INFO';
+export const GOODS_EVALUATE_LIST='GOODS_EVALUATE_LIST';
 /**附近*/
 
 
