@@ -14,8 +14,10 @@ import styles from './index.module.scss';
 import Swiper from '../../compnents/Swiper';
 class Index extends Component {
     componentDidMount(){
-        const {location}=this.props;
-        if(location){
+        const {location,city}=this.props;
+        if(city){
+            this.props.getList({cityid:city.cityid});
+        }else if(location){
             this.props.getList({lng:location.longitude,lat:location.latitude});
         }
     }
@@ -101,6 +103,7 @@ class Index extends Component {
 }
 const mapStateToProps=({global,infoData})=>({
     location:global.location,
+    city:global.city,
     goodsInfo:infoData.getIn([actionTypes.GOODS_INFO,'data']).data||[]
     })
 

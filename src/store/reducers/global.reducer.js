@@ -13,6 +13,8 @@ export default (state = initialState, action)=> {
             return {...state,location:action.payload};
         case 'SAVE_EXTEND':
             return {...state,extend:action.payload};
+        case 'SAVE_CITY':
+            return {...state,city:action.payload};
         default:
             break;
     }

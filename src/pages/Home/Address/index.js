@@ -12,31 +12,39 @@ class Index extends Component{
     }
     componentDidMount(){
         this.props.getCity();
-
         document.getElementById('root').onscroll=()=>{
-            console.log(this.A.offsetTop);
+            // console.log(this.A.offsetTop);
         };
     }
     componentWillReceiveProps({city}){
         if(city&&city.A){
              setTimeout(()=>{
                 Object.keys(city).map((key)=>{
-                      console.log(key);
+                    if(key!=='hotcity')
+                    this.offsetArr.push(this[key].offsetTop)
                 });
              });
-          console.log('s');
         }
     }
+    handleIndex=(key)=>{
+        document.getElementById('root').scrollTop=this.offsetArr[Object.keys(this.props.city).indexOf(key)]
+    };
+    handleClick=(city)=>{
+      this.props.saveCity(city);
+      this.props.pop()
+    };
     render(){
         const {city}=this.props;
         return(<div className={styles.container}>
-            <div className={styles.title}>你说在的地区</div>
+            <div className={styles.title}>你所在的地区</div>
             <div className={styles.location}><img src={location} alt=""/>成都</div>
             <div className={styles.title}>热门城市</div>
             <div className={styles.hotCity}>
                 {
                     city.hotcity&&city.hotcity.map((hcity,index)=>{
-                        return(<div key={index} className={styles.location}>{hcity.name}</div>);
+                        return(<div key={index}
+                                    onClick={()=>this.handleClick(hcity)}
+                                    className={styles.location}>{hcity.name}</div>);
                     })
                 }
             </div>
@@ -55,7 +63,9 @@ class Index extends Component{
                                             let citys=[];
                                             city[key].forEach((value,index)=>{
                                                 citys.push(
-                                                    <div className={styles.city} key={index}>{value.name}</div>
+                                                    <div className={styles.city}
+                                                         onClick={()=>this.handleClick(value)}
+                                                         key={index}>{value.name}</div>
                                                 );
                                             });
                                             return citys;
@@ -72,7 +82,8 @@ class Index extends Component{
             <div className={styles.indexes} >
                 {Object.keys(city).map((key)=>{
                     if(key!=='hotcity'){
-                        return(<div key={key} className={styles.index}>{key}</div>);
+                        return(<div key={key} className={styles.index}
+                                    onClick={()=>this.handleIndex(key)}>{key}</div>);
                     }
                 })}
             </div>
@@ -92,6 +103,12 @@ const mapDispatchToProps=(dispatch)=>({
         dispatch({
             type:actionTypes.GET_CITY
         });
+    },
+    saveCity(city){
+        dispatch({
+            type:actionTypes.SAVE_CITY,
+            payload:city
+        })
     }
 
 });
