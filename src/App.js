@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Provider} from 'react-redux';
 import qs from 'qs';
-import {Router,Redirect,Route,IndexRedirect,IndexRoute,browserHistory} from 'react-router';
+import {Router,Redirect,Route,IndexRedirect,IndexRoute,hashHistory} from 'react-router';
 import { createStore,applyMiddleware,compose} from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { syncHistoryWithStore ,routerMiddleware} from 'react-router-redux';
@@ -37,8 +37,8 @@ import Client from './pages/Me/Client';
 
 const sagaMiddleware = createSagaMiddleware();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store=createStore(reducer,composeEnhancers(applyMiddleware(sagaMiddleware,routerMiddleware(browserHistory))));
-const history = syncHistoryWithStore(browserHistory, store);
+const store=createStore(reducer,composeEnhancers(applyMiddleware(sagaMiddleware,routerMiddleware(hashHistory))));
+const history = syncHistoryWithStore(hashHistory, store);
 sagaMiddleware.run(rootSaga);
 
 const queryParams = qs.parse(window.location.href.split('?')[1],{ ignoreQueryPrefix: true });

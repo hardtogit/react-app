@@ -14,7 +14,7 @@
 }
 
   .leftText {
-    font-size:  0.15rem;
+    font-size:  0.14rem;
     display:block;
     color: #000;
     img{
@@ -64,5 +64,12 @@
     .wrap {
     border-bottom: 1px solid #ededed
   }
+  }
+  &.five {
+    border-bottom-width: 0;
+
+    .wrap {
+      border-bottom-width: 0
+    }
   }
 }

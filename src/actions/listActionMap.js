@@ -2,7 +2,9 @@ import * as actionTypes from './actionTypes';
 import Fetch from '../request/fetch';
 export default {
     //抢购
-
+    [actionTypes.GOODS_EVALUATE_LIST]: {
+    apiFn:  Fetch.goodsEvaluateList
+    },
     //我的
     // [actionTypes.GOODS_LIST]: {
     //     apiFn:  Fetch.directInvestProjects

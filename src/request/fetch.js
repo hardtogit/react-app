@@ -5,7 +5,7 @@ import qs from 'qs';
 import home from './home';
 import me  from './me';
 // const ROOT_URL = '/mobile_api/'
-const ROOT_URL = 'http://pdd.supai.net/wechat/';
+const ROOT_URL = 'https://pdd.supai.net/wechat/';
 const transferObjectToFormat = (o) => {
   let result = [];
   Object.keys(o).map(key => result.push(key + '=' + encodeURIComponent(o[key])));

@@ -34,7 +34,7 @@ const getPublicUrl = appPackageJson =>
 function getServedPath(appPackageJson) {
   const publicUrl = getPublicUrl(appPackageJson);
   const servedUrl =
-    envPublicUrl || (publicUrl ? url.parse(publicUrl).pathname : '/static/build/');
+    envPublicUrl || (publicUrl ? url.parse(publicUrl).pathname : '/build/');
   return ensureSlash(servedUrl, true);
 }
 
