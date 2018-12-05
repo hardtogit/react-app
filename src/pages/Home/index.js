@@ -13,26 +13,39 @@ import travel from '../../assets/img/travel.png';
 import styles from './index.module.scss';
 import Swiper from '../../compnents/Swiper';
 class Index extends Component {
+    constructor(props){
+        super(props);
+        this.state={}
+        this.search={}
+    }
     componentDidMount(){
         const {location,city}=this.props;
         if(city){
             this.props.getList({cityid:city.cityid});
         }else if(location){
             this.props.getList({lng:location.longitude,lat:location.latitude});
+            this.props.getCityName({lng:location.longitude,lat:location.latitude})
         }
     }
     componentWillReceiveProps({location}){
          if(location&&location!==this.props.location){
              this.props.getList({lng:location.longitude,lat:location.latitude});
+             this.props.getCityName({lng:location.longitude,lat:location.latitude})
          }
     }
     render() {
         console.log(this.props);
-        const {goodsInfo,push}=this.props;
+        const {goodsInfo,push,city,cityName}=this.props;
+        let cityText='定位中...';
+        if(city&&city.name){
+            cityText=city.name;
+        }else if(cityName&&cityName.city){
+            cityText=cityName.city
+        }
         return (
            <div className={styles.content}>
                <div className={styles.search}>
-                   <div className={styles.text} onClick={()=>push('/Address')}>成都</div>
+                   <div className={styles.text} onClick={()=>push('/Address')}>{cityText}</div>
                    <div className={styles.input} data-role="vehicleSearch" onClick={()=>push('/search')}>
                        <img className={styles.img} src={search} alt=""/>
                        输入关键词
@@ -104,6 +117,7 @@ class Index extends Component {
 const mapStateToProps=({global,infoData})=>({
     location:global.location,
     city:global.city,
+    cityName:infoData.getIn([actionTypes.CITY_NAME_INFO,'data']).data||{},
     goodsInfo:infoData.getIn([actionTypes.GOODS_INFO,'data']).data||[]
     })
 
@@ -124,8 +138,14 @@ const mapDispatchToProps=(dispatch)=>{
                 type:actionTypes.GOODS_INFO,
                 params:[{...location,page:1,limit:10}]
             });
-
+        },
+        getCityName(location){
+            dispatch({
+                type:actionTypes.CITY_NAME_INFO,
+                params:[location]
+            })
         }
+
     };
 
 };

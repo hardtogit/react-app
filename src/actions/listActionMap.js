@@ -5,6 +5,10 @@ export default {
     [actionTypes.GOODS_EVALUATE_LIST]: {
     apiFn:  Fetch.goodsEvaluateList
     },
+    //附近
+    [actionTypes.STORE_LIST]: {
+        apiFn:  Fetch.storeList
+    },
     //我的
     // [actionTypes.GOODS_LIST]: {
     //     apiFn:  Fetch.directInvestProjects

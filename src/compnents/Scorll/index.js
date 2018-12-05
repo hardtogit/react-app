@@ -24,7 +24,7 @@ class Index extends Component{
         return(
             <div id="wrapper"
                 ref={(scrollDom)=>{this.scrollDom=scrollDom;}}
-                style={{height:'100%',position:'relative',overflow:'scroll'}}
+                style={{height:'100%',position:'relative',overflowY:'scroll'}}
 
             >
                 {this.props.children}

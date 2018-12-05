@@ -14,6 +14,9 @@ export default {
     [actionTypes.GOODS_DETAIL_INFO]: {//获取商品详情
         apiFn: Fetch.goodsDetailInfo
     },
+    [actionTypes.CITY_NAME_INFO]: {//获取城市名称
+        apiFn: Fetch.cityNameInfo
+    },
     //我的
     [actionTypes.USER_INFO]: {//获取用户信息
         apiFn: Fetch.userInfo

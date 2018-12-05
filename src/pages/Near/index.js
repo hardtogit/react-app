@@ -2,6 +2,9 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import classNames from 'classnames'
 import {goBack} from 'react-router-redux'
+import {clientHeight,clientWidth} from '../../utils';
+import ListTemplate from '../../compnents/ListTemplate';
+import * as actionTypes from '../../actions/actionTypes'
 import GoodsCard  from '../../compnents/common/GoodsCard'
 import Scorll from '../../compnents/Scorll'
 import search from '../../assets/img/search.png'
@@ -13,7 +16,8 @@ class Index extends Component {
         this.state={
             fixedBar:false,
             activeTab:0,
-            scrollIng:false
+            scrollIng:false,
+            canScroll:false
         }
     }
     changeTab=(index)=> {
@@ -23,6 +27,9 @@ class Index extends Component {
         }
         if(fixedBar){
             this.myScroll.scrollTop=SearchBarHeight
+            this.setState({
+                canScroll:true
+            })
         }
         this.setState({
             activeTab:index
@@ -30,7 +37,8 @@ class Index extends Component {
 
     }
     render() {
-        const {fixedBar,activeTab}=this.state;
+        const {list,getList,pending,pageEnd} = this.props;
+        const {fixedBar,activeTab,canScroll}=this.state;
         return (
             <div  className={styles.content}>
                 {fixedBar&&
@@ -64,9 +72,9 @@ class Index extends Component {
                 scrollEnd={()=>this.setState({scrollIng:false})}
                 scroll={(e)=>{
                     if(e.target.scrollTop>SearchBarHeight&&this.state.fixedBar!==true){
-                        this.setState({fixedBar:true})
+                        this.setState({fixedBar:true,canScroll:true})
                     }else if(e.target.scrollTop<=SearchBarHeight&&this.state.fixedBar!==false){
-                        this.setState({fixedBar:false})
+                        this.setState({fixedBar:false,canScroll:false},)
                     }
                 }}
             >
@@ -100,24 +108,25 @@ class Index extends Component {
                     </div>
                 </div>
                 <div className={classNames(['clearfix',styles.recommend])}>
-                    {(()=>{
-                        let arr=[]
-                        for(let i=0;i<60;i++){
-                        arr.push(
-                            <div className={styles.store} key={i}>
-                                <GoodsCard
-                                    key={i}
-                                    img='https://p1.meituan.net/deal/893175033c96530ce73b0c2a7421657855504.jpg.webp@180w_180h_1e_1c_1l_80q%7Cwatermark=0'
-                                    title='大通冰室'
-                                    starNum={4}
-                                    distance='500m'
-                                />
-                            </div>
-                        )}
-                        return arr
-                    })()
-
-                    }
+                    <ListTemplate style={{overflow:canScroll?'scroll':'hidden'}}  height={clientHeight-clientWidth/3.75*1} distance={5} fetch={()=>getList()} isLoading={pending}
+                                  endType={pageEnd}
+                    >
+                        {
+                            list.map((value,index)=>{
+                                return(
+                                    <div className={styles.store} key={index}>
+                                        <GoodsCard
+                                            key={index}
+                                            img='https://p1.meituan.net/deal/893175033c96530ce73b0c2a7421657855504.jpg.webp@180w_180h_1e_1c_1l_80q%7Cwatermark=0'
+                                            title='大通冰室'
+                                            starNum={4}
+                                            distance='500m'
+                                        />
+                                    </div>
+                                );
+                            })
+                        }
+                    </ListTemplate>
                 </div>
                 </div>
             </Scorll>
@@ -126,10 +135,21 @@ class Index extends Component {
     }
 }
 
-const mapStateToProps = () => ({});
+const mapStateToProps = (state) => ({
+    pending:state.listData.getIn([actionTypes.STORE_LIST,'pending']),
+    list:state.listData.getIn([actionTypes.STORE_LIST,'data']),
+    pageEnd:state.listData.getIn([actionTypes.STORE_LIST,'pageEnd'])
+});
 const mapDispatchToProps = (dispatch) => ({
     pop(url) {
         dispatch(goBack(url))
+    },
+    getList(data) {
+        dispatch({
+            type:actionTypes.STORE_LIST,
+            params:[data]
+            }
+        )
     }
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Index)

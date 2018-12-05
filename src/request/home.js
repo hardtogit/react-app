@@ -7,6 +7,7 @@ const requests = (Fetch) => {
     Fetch.goodsInfo = (data) =>{ return Fetch('goods.show/goodsList', 'POST' ,data);};
     Fetch.goodsDetailInfo = (data) =>{ return Fetch('goods.show/goodsDetail', 'POST' ,data);};
     Fetch.goodsEvaluateList = (page,limit,arg) =>{ return Fetch('goods.rate/getGoodsRate', 'POST' ,{page,limit,...arg});};
+    Fetch.cityNameInfo = (data) =>{ return Fetch('auth.location/getByGeo', 'POST' ,data);};
 
 };
 

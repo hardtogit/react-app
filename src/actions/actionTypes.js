@@ -8,8 +8,9 @@ export const GET_CITY='GET_CITY';
 export const GOODS_INFO = 'GOODS_INFO';
 export const GOODS_DETAIL_INFO='GOODS_DETAIL_INFO';
 export const GOODS_EVALUATE_LIST='GOODS_EVALUATE_LIST';
+export const CITY_NAME_INFO='CITY_NAME_INFO';
 /**附近*/
-
+export const STORE_LIST='STORE_LIST'
 
 /**个人*/
 export const USER_INFO = 'USER_INFO';

@@ -154,7 +154,7 @@ class Scroll extends Component{
         return(
             <div style={{...copyStyle}} ref="scrollBox">
               <div ref="listBox">
-              <div>
+              <div className='clearfix'>
                   {titleChild}
               {
                   ListDom
