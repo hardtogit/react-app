@@ -33,8 +33,6 @@ class Index extends Component {
                 first:false
             });
         });
-
-
     };
     render() {
         const {list,getList,pending,pageEnd} = this.props;
@@ -80,7 +78,7 @@ class Index extends Component {
                 <div className={classNames(['clearfix',styles.recommend])}>
                     <ListTemplate
                         ref={(listTemplate)=>{this.listTemplate=listTemplate;}}
-                        height={clientHeight-clientWidth/3.75*0.55}
+                        height={clientHeight-clientWidth/3.75*0.49}
                         distance={5}
                         fetch={()=>getList(tabParam)}
                         isLoading={pending}
