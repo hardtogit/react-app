@@ -21,17 +21,17 @@ class Index extends Component{
              setTimeout(()=>{
                 Object.keys(city).map((key)=>{
                     if(key!=='hotcity')
-                    this.offsetArr.push(this[key].offsetTop)
+                    this.offsetArr.push(this[key].offsetTop);
                 });
              });
         }
     }
     handleIndex=(key)=>{
-        document.getElementById('root').scrollTop=this.offsetArr[Object.keys(this.props.city).indexOf(key)]
+        document.getElementById('root').scrollTop=this.offsetArr[Object.keys(this.props.city).indexOf(key)];
     };
     handleClick=(city)=>{
       this.props.saveCity(city);
-      this.props.pop()
+      this.props.pop();
     };
     render(){
         const {city}=this.props;
@@ -43,8 +43,9 @@ class Index extends Component{
                 {
                     city.hotcity&&city.hotcity.map((hcity,index)=>{
                         return(<div key={index}
-                                    onClick={()=>this.handleClick(hcity)}
-                                    className={styles.location}>{hcity.name}</div>);
+                            onClick={()=>this.handleClick(hcity)}
+                            className={styles.location}
+                               >{hcity.name}</div>);
                     })
                 }
             </div>
@@ -64,8 +65,9 @@ class Index extends Component{
                                             city[key].forEach((value,index)=>{
                                                 citys.push(
                                                     <div className={styles.city}
-                                                         onClick={()=>this.handleClick(value)}
-                                                         key={index}>{value.name}</div>
+                                                        onClick={()=>this.handleClick(value)}
+                                                        key={index}
+                                                    >{value.name}</div>
                                                 );
                                             });
                                             return citys;
@@ -83,7 +85,8 @@ class Index extends Component{
                 {Object.keys(city).map((key)=>{
                     if(key!=='hotcity'){
                         return(<div key={key} className={styles.index}
-                                    onClick={()=>this.handleIndex(key)}>{key}</div>);
+                            onClick={()=>this.handleIndex(key)}
+                               >{key}</div>);
                     }
                 })}
             </div>
@@ -108,7 +111,7 @@ const mapDispatchToProps=(dispatch)=>({
         dispatch({
             type:actionTypes.SAVE_CITY,
             payload:city
-        })
+        });
     }
 
 });

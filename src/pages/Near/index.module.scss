@@ -43,6 +43,7 @@
   .tab{
     padding: 0 0.10rem;
     height: 0.27rem;
+    margin-bottom: 0.1rem;
     float: left;
     .text{
       height: 100%;
@@ -56,18 +57,20 @@
   }
 }
 .recommend{
-  padding: 0 0.10rem;
-  margin-top:0.15rem;
+  //padding: 0 0.10rem;
+  //margin-top:0.15rem;
   .store{
     margin-bottom: 0.10rem;
     &:nth-child(2n+1){
       padding-right: 0.05rem;
+      padding-left: 0.1rem;
       width: 50%;
       float: left;
     }
     &:nth-child(2n){
       width: 50%;
       padding-left: 0.05rem;
+      padding-right: 0.1rem;
       float: left;
     }
   }

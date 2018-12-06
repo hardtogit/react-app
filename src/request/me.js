@@ -10,6 +10,6 @@ const requests = (Fetch) => {
     Fetch.teamList = (page,limit,arg) => {   return Fetch('center.invite/superior', 'POST',{page,limit,...arg});};
     Fetch.clientList = (page,limit,arg) => {   return Fetch('center.invite/recommend', 'POST',{page,limit,...arg});};
     Fetch.storeInviteInfo = (arg) => {   return Fetch('stores.invite/storeInvite', 'POST',{...arg});};
-    Fetch.jsSdkConfigInfo = (arg) => {   return Fetch('auth.sdk/get', 'POST',{...arg});};
+    Fetch.jsSdkConfigInfo = (arg) => {   return Fetch('/general/user.sdk/get', 'POST',{...arg});};
 };
 export default requests;

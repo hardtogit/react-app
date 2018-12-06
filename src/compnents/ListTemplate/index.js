@@ -30,7 +30,7 @@ class Scroll extends Component{
            style:{
                height:400,
                overflowY:'scroll',
-               position: 'relative',
+               position: 'sticky',
                width:'100%'
            },
           distance:5,
@@ -61,6 +61,9 @@ class Scroll extends Component{
             initLoading:true
         });
         this.getListall();
+        if(this.props.getScroll){
+            this.props.getScroll(this.refs.scrollBox);
+        }
     }
     componentWillReceiveProps(nextProps){
         if(nextProps.isLoading){
@@ -112,6 +115,7 @@ class Scroll extends Component{
     }
     addScroll(Element){
         Element.addEventListener('scroll',()=>{
+            this.props.onScroll(Element);
             const Top=Element.scrollTop;
                   this.next(Top);
         });
@@ -154,7 +158,7 @@ class Scroll extends Component{
         return(
             <div style={{...copyStyle}} ref="scrollBox">
               <div ref="listBox">
-              <div className='clearfix'>
+              <div className="clearfix">
                   {titleChild}
               {
                   ListDom

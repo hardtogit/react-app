@@ -3,7 +3,7 @@
  */
 import qs from 'qs';
 import home from './home';
-import near from './near'
+import near from './near';
 import me  from './me';
 // const ROOT_URL = '/mobile_api/'
 const ROOT_URL = 'https://pdd.supai.net/wechat/';

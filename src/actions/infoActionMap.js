@@ -26,7 +26,7 @@ export default {
     },
     [actionTypes.JSSDK_CONFIG_INFO]: {//推荐店铺
         apiFn: Fetch.jsSdkConfigInfo
-    },
+    }
 
 
 };

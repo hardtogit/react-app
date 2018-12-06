@@ -19,7 +19,8 @@ function* takeRequest (action) {
         }
         if(action.type===actionTypes.JSSDK_CONFIG_INFO&&response.code===0){
             wx.config({
-                ...response.data
+                ...response.data,
+                debug:false
             });
         const res=  yield call(()=>new Promise((resolve,reject)=>{
                wx.ready(function(){

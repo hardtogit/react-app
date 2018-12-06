@@ -15,8 +15,8 @@ import Swiper from '../../compnents/Swiper';
 class Index extends Component {
     constructor(props){
         super(props);
-        this.state={}
-        this.search={}
+        this.state={};
+        this.search={};
     }
     componentDidMount(){
         const {location,city}=this.props;
@@ -24,13 +24,13 @@ class Index extends Component {
             this.props.getList({cityid:city.cityid});
         }else if(location){
             this.props.getList({lng:location.longitude,lat:location.latitude});
-            this.props.getCityName({lng:location.longitude,lat:location.latitude})
+            this.props.getCityName({lng:location.longitude,lat:location.latitude});
         }
     }
     componentWillReceiveProps({location}){
          if(location&&location!==this.props.location){
              this.props.getList({lng:location.longitude,lat:location.latitude});
-             this.props.getCityName({lng:location.longitude,lat:location.latitude})
+             this.props.getCityName({lng:location.longitude,lat:location.latitude});
          }
     }
     render() {
@@ -40,7 +40,7 @@ class Index extends Component {
         if(city&&city.name){
             cityText=city.name;
         }else if(cityName&&cityName.city){
-            cityText=cityName.city
+            cityText=cityName.city;
         }
         return (
            <div className={styles.content}>
@@ -143,7 +143,7 @@ const mapDispatchToProps=(dispatch)=>{
             dispatch({
                 type:actionTypes.CITY_NAME_INFO,
                 params:[location]
-            })
+            });
         }
 
     };
