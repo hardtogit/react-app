@@ -15,27 +15,39 @@ import Swiper from '../../compnents/Swiper';
 class Index extends Component {
     constructor(props){
         super(props);
-        this.state={};
+        this.state={
+            tags:1
+        };
         this.search={};
+        this.location={};
     }
     componentDidMount(){
         const {location,city}=this.props;
         if(city){
-            this.props.getList({cityid:city.cityid});
+            this.location={cityid:city.cityid};
+            this.props.getList({cityid:city.cityid,tags:this.state.tags});
         }else if(location){
-            this.props.getList({lng:location.longitude,lat:location.latitude});
-            this.props.getCityName({lng:location.longitude,lat:location.latitude});
+            this.location={lng:location.longitude,lat:location.latitude};
+            this.props.getList({lng:location.longitude,lat:location.latitude,tags:this.state.tags});
+            this.props.getCityName({lng:location.longitude,lat:location.latitude,tags:this.state.tags});
         }
     }
     componentWillReceiveProps({location}){
          if(location&&location!==this.props.location){
-             this.props.getList({lng:location.longitude,lat:location.latitude});
-             this.props.getCityName({lng:location.longitude,lat:location.latitude});
+             this.location={lng:location.longitude,lat:location.latitude};
+             this.props.getList({lng:location.longitude,lat:location.latitude,tags:this.state.tags});
+             this.props.getCityName({lng:location.longitude,lat:location.latitude,tags:this.state.tags});
          }
     }
+    handleTabChange=(index)=>{
+        this.setState({
+            tags:index
+        });
+        this.props.getList({...this.location,tags:index});
+    };
     render() {
-        console.log(this.props);
         const {goodsInfo,push,city,cityName}=this.props;
+        const {tags}=this.state;
         let cityText='定位中...';
         if(city&&city.name){
             cityText=city.name;
@@ -81,14 +93,14 @@ class Index extends Component {
                    </div>
                </div>
                <div className={styles.types}>
-                   <div className={classNames([styles.type,styles.active])}>
-                       <div className={styles.label}>限时特卖</div>
+                   <div className={classNames([styles.type,tags===1&&styles.active])}>
+                       <div className={styles.label} onClick={()=>this.handleTabChange(1)}>限时特卖</div>
                    </div>
-                   <div className={classNames([styles.type])}>
-                       <div className={styles.label}>即将售罄</div>
+                   <div className={classNames([styles.type,tags===2&&styles.active])}>
+                       <div className={styles.label} onClick={()=>this.handleTabChange(2)}>即将售罄</div>
                    </div>
-                   <div className={classNames([styles.type])}>
-                       <div className={styles.label}>抢购预告</div>
+                   <div className={classNames([styles.type,tags===3&&styles.active])}>
+                       <div className={styles.label} onClick={()=>this.handleTabChange(3)}>抢购预告</div>
                    </div>
                </div>
                <div className={styles.goods}>
@@ -100,8 +112,8 @@ class Index extends Component {
                                title={value.goodsname}
                                deadline={value.closetime+'结束'}
                                style={{marginBottom:'0.1rem'}}
-                               currentPrice="34.56"
-                               originalPrice="86.00"
+                               currentPrice={value.minpretium}
+                               originalPrice={value.maxmartetprices}
                                copies={value.sales}
                                onClick={()=>{push(`/goodsDetail/${value.id}`);}}
                            />

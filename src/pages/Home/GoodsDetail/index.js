@@ -18,7 +18,7 @@ class Index extends Component {
         getDetail({gid:id});
     }
     render() {
-        const {detail}=this.props;
+        const {detail,push}=this.props;
         const labels=['24小时前随时退'];
         if(detail.isbookin===1){
             labels.push('需提前预约');
@@ -30,8 +30,8 @@ class Index extends Component {
                    title={detail.goodsname}
                    deadline={detail.closetime+'结束'}
                    style={{marginBottom:'0.1rem'}}
-                   currentPrice="34.56"
-                   originalPrice="86.00"
+                   currentPrice={detail.minpretium}
+                   originalPrice={detail.maxmartetprices}
                    copies={detail.sales}
                    labels={labels}
                />
@@ -60,7 +60,7 @@ class Index extends Component {
                        {detail.goods_rate.ratecontent}
                    </div>
                    <div className={styles.more}>
-                   <BaseText label="查看全部" borderType='five' containerStyle={{padding:'0'}}/>
+                   <BaseText label="查看全部" borderType="five" containerStyle={{padding:'0'}}/>
                    </div>
 
                </div>}
@@ -72,16 +72,20 @@ class Index extends Component {
                                <div className={styles.time}>营业时间：{detail.businesstime}</div>
                            </div>
                            <div className={styles.right}>
-                               <a  href="tel:15311480726"><img src={phone} alt=""/></a>
+                               <a  href={`tel:${detail.phone}`}><img src={phone} alt=""/></a>
                            </div>
                        </div>
                    </div>
                </div>
                <img className={styles.title} src={goodsDetail} alt=""/>
+               <div>{detail.info}</div>
                <img className={styles.subTitle} src={common} alt=""/>
                <div className={styles.bottom}>
                    <div className={styles.left}>
-                       <div className={styles.home}>
+                       <div className={styles.home} onClick={()=>{
+                           push('/home');
+                       }}
+                       >
                            <img src={home} alt=""/>
                            <div className={styles.text}>首页</div>
                        </div>
@@ -92,7 +96,7 @@ class Index extends Component {
                    </div>
                    <div className={styles.right} onClick={()=>this.buyPopup.show()}>立即抢购</div>
                </div>
-               <BuyPopup ref={(buyPopup)=>{this.buyPopup=buyPopup;}} />
+               <BuyPopup detail={detail} ref={(buyPopup)=>{this.buyPopup=buyPopup;}} />
            </div>
         );
     }

@@ -80,6 +80,7 @@ class Index extends Component {
                         ref={(listTemplate)=>{this.listTemplate=listTemplate;}}
                         height={clientHeight-clientWidth/3.75*0.49}
                         distance={5}
+                        top={clientWidth/3.75*0.77}
                         fetch={()=>getList(tabParam)}
                         isLoading={pending}
                         endType={pageEnd}

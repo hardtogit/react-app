@@ -12,7 +12,7 @@ class Index extends Component{
     }
     componentDidMount(){
         this.props.getCity();
-        document.getElementById('root').onscroll=()=>{
+        document.getElementsByClassName('app-container').onscroll=()=>{
             // console.log(this.A.offsetTop);
         };
     }
@@ -27,7 +27,7 @@ class Index extends Component{
         }
     }
     handleIndex=(key)=>{
-        document.getElementById('root').scrollTop=this.offsetArr[Object.keys(this.props.city).indexOf(key)];
+        document.getElementsByClassName('app-container')[0].scrollTop=this.offsetArr[Object.keys(this.props.city).indexOf(key)];
     };
     handleClick=(city)=>{
       this.props.saveCity(city);

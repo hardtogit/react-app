@@ -131,7 +131,7 @@ class Scroll extends Component{
                }
     }
     render(){
-        const {children,loading,height,style,endType,endload,initLoad,nullDom,titleChild} = this.props,
+        const {children,loading,height,style,endType,endload,initLoad,nullDom,titleChild,top} = this.props,
             {initLoading}=this.state,
              listArry=[];
              children&&children.map((child,i)=>{
@@ -164,7 +164,7 @@ class Scroll extends Component{
                   ListDom
               }
               </div>
-              <div className={classNames(styles.fsLoading,this.state.init&&!endType&&styles.block||styles.hidden)}>
+              <div style={{top:top}} className={classNames(styles.fsLoading,this.state.init&&!endType&&styles.block||styles.hidden)}>
                  {
                      this.state.init&&!endType&&initLoadDom||null
                  }

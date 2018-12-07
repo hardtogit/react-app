@@ -53,7 +53,11 @@ const Fetch = (url, type, data={}, headers) => {
                 : url;
         }
     }
-    fetch(ROOT_URL + url, options)
+    let COPY_ROOT_URL=ROOT_URL;
+    if(url=='general/user.sdk/get'){
+        COPY_ROOT_URL='https://pdd.supai.net/';
+    }
+    fetch(COPY_ROOT_URL + url, options)
     .then((response) => {
       return response.json();
     })

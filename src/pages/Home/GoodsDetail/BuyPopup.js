@@ -4,12 +4,42 @@ import close from '../../../assets/img/close.png';
 import checked from '../../../assets/img/checked.png';
 import classNames from 'classnames';
 import styles from './index.module.scss';
+const  returnFloat=(value)=>{
+     value=Math.round(parseFloat(value)*100)/100;
+    let s=value.toString().split('.');
+    if(s.length==1){
+        value=value.toString()+'.00';
+        return value;
+    }
+    if(s.length>1){
+        if(s[1].length<2){
+            value=value.toString()+'0';
+        }
+        return value;
+    }
+};
 class Index extends Component{
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state={
-            number:1
+        this.state = {
+            number: 1,
+            goodsIndex: 1
         };
+        this.goods = {};
+        this.payment = '0.00';
+    }
+
+    componentWillReceiveProps({detail}){
+        if(detail.minpretium){
+            detail.spec.map((value,index)=>{
+                if(value.pretium===detail.minpretium){
+                    this.goods=value;
+                    this.setState({
+                        goodsIndex:index
+                    });
+                }
+            });
+        }
     }
     show=()=>{
        this.popup.show();
@@ -33,6 +63,13 @@ class Index extends Component{
     };
     render(){
         const {number}=this.state;
+        const {goodsIndex}=this.state;
+        const {detail}=this.props;
+        if(detail.spec){
+            this.goods=detail.spec[goodsIndex];
+            this.payment=returnFloat(this.goods.pretium*number);
+        }
+
         return(
             <Popup ref={(popup)=>{this.popup=popup;}}>
                 <div className={styles.buyContainer}>
@@ -42,17 +79,17 @@ class Index extends Component{
                     </div>
                    <div className={styles.goodsInfo}>
                         <div className={styles.left}>
-                            <img src={close} alt=""/>
+                            <img src={detail.cover} alt=""/>
                         </div>
                        <div className={styles.right}>
-                           <div className={styles.popTitle}>一把骨周年庆全城店通用（3-4人餐）</div>
+                           <div className={styles.popTitle}>{detail.goodsname}</div>
                            <div>
-                               <span className={styles.oneUnit}>¥</span><span className={styles.currentPrice}>68.90</span>
+                               <span className={styles.oneUnit}>¥</span><span className={styles.currentPrice}>{this.goods.pretium}</span>
                            </div>
                            <div className={styles.flex}>
-                               <div className={styles.left}><span className={styles.twoUnit}>¥</span><span className={styles.originalPrice}>168.90</span></div>
+                               <div className={styles.left}><span className={styles.twoUnit}>¥</span><span className={styles.originalPrice}>{this.goods.martetprices}</span></div>
                                <div className={styles.right}>
-                                   剩余999
+                                   剩余{this.goods.stocks}份
                                </div>
                            </div>
                        </div>
@@ -88,12 +125,12 @@ class Index extends Component{
                             备注
                         </div>
                         <div className={styles.right}>
-                            <input type="text" placeholder="填写备注信息"/>
+                            <input ref={(remark)=>{this.remark=remark;}} type="text"  placeholder="填写备注信息"/>
                         </div>
 
                     </div>
                     <div className={styles.amount}>
-                        小记：<span className={styles.oneUnit}>¥</span><span className={styles.currentPrice}>68.90</span>
+                        小记：<span className={styles.oneUnit}>¥</span><span className={styles.currentPrice}>{this.payment}</span>
                     </div>
                     <div className={styles.clause}>
                         <img src={checked} alt=""/>已阅读并同意网站条款
@@ -102,7 +139,7 @@ class Index extends Component{
                     <div className={styles.buy}>
                         <div className={styles.left}>
                             <div className={styles.text}>合计实际支付金额</div>
-                            <div><span className={styles.oneUnit}>¥</span><span className={styles.currentPrice}>68.90</span></div>
+                            <div><span className={styles.oneUnit}>¥</span><span className={styles.currentPrice}>{this.payment}</span></div>
                         </div>
                         <div className={styles.right}>立即支付</div>
                     </div>
