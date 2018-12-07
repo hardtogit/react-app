@@ -42,7 +42,7 @@ function* takeRequest (action) {
             });
         }
         if(response.code===1){
-            window.location.href=response.data.url;
+            window.location.href=`${response.data.url}?url=${window.location.href}`;
         }else{
             yield put({
                 type: actionTypes.FETCH_INFO_DATA_SUCCESS,
