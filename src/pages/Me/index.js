@@ -12,9 +12,9 @@ import team from '../../assets/img/team.png';
 import client from '../../assets/img/client.png';
 import introduce from '../../assets/img/introduce.png';
 import arrowRight from '../../assets/img/arrowRight.png';
-import intelligent from '../../assets/img/intelligent.png';
+import intelligentTeam from '../../assets/img/intelligentTeam.png';
 import inviteIntelligent from '../../assets/img/inviteIntelligent.png';
-import moneyOpen from '../../assets/img/moneyOpen.png';
+import intelligentGeneralize from '../../assets/img/intelligentGeneralize.png';
 import styles from './index.module.scss';
 
 class Index extends Component {
