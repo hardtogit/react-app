@@ -60,7 +60,12 @@ class Index extends Component {
                        {detail.goods_rate.ratecontent}
                    </div>
                    <div className={styles.more}>
-                   <BaseText label="查看全部" borderType="five" containerStyle={{padding:'0'}}/>
+                   <BaseText label="查看全部" borderType="five"
+                       onClick={()=>{
+                                 push(`/evaluate/${detail.id}`);
+                             }}
+                       containerStyle={{padding:'0'}}
+                   />
                    </div>
 
                </div>}

@@ -34,10 +34,10 @@ class Index extends Component{
       this.props.pop();
     };
     render(){
-        const {city}=this.props;
+        const {city,cityName}=this.props;
         return(<div className={styles.container}>
             <div className={styles.title}>你所在的地区</div>
-            <div className={styles.location}><img src={location} alt=""/>成都</div>
+            <div className={styles.location}><img src={location} alt=""/>{cityName.city||'定位中...'}</div>
             <div className={styles.title}>热门城市</div>
             <div className={styles.hotCity}>
                 {
@@ -96,7 +96,8 @@ class Index extends Component{
 
 }
 const mapStateToProps=({infoData})=>({
-    city:infoData.getIn([actionTypes.GET_CITY,'data']).data||{}
+    city:infoData.getIn([actionTypes.GET_CITY,'data']).data||{},
+    cityName:infoData.getIn([actionTypes.CITY_NAME_INFO,'data']).data||{}
 });
 const mapDispatchToProps=(dispatch)=>({
     pop(){

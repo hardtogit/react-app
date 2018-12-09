@@ -20,7 +20,7 @@ import Me from './pages/Me';
 import GoodsDetail from './pages/Home/GoodsDetail';
 import Search from './pages/Home/Search';
 import Address from './pages/Home/Address';
-
+import Evaluate from './pages/Home/Evaluate';
 //我的
 import Withdraw from './pages/Me/Withdraw';
 import Collaborate from './pages/Me/Collaborate';
@@ -41,14 +41,7 @@ const store=createStore(reducer,composeEnhancers(applyMiddleware(sagaMiddleware,
 const history = syncHistoryWithStore(hashHistory, store);
 sagaMiddleware.run(rootSaga);
 
-const queryParams = qs.parse(window.location.href.split('?')[1],{ ignoreQueryPrefix: true });
-if(queryParams.token){
-    sessionStorage.setItem('token',queryParams.token);
-    store.dispatch({
-        type:actionTypes.JSSDK_CONFIG_INFO,
-        params:[{url:window.location.href}]
-    });
-}
+// const queryParams = qs.parse(window.location.href.split('?')[1],{ ignoreQueryPrefix: true });
 //获取授权配置
 store.dispatch({
     type:actionTypes.JSSDK_CONFIG_INFO,
@@ -72,6 +65,7 @@ class App extends Component {
                   <Route path="goodsDetail/:id" component={GoodsDetail} />
                   <Route path="search" component={Search} />
                   <Route path="address" component={Address} />
+                  <Route path="evaluate/:id" component={Evaluate} />
 
                   {/*个人中心*/}
                   <Route path="withdraw" component={Withdraw} />

@@ -32,17 +32,23 @@ function* takeRequest (action) {
                        }
                    });
                });
+            wx.error(function(res){
+                console.log(res);
+            });
            }) );
+        yield put({
+            type:actionTypes.CITY_NAME_INFO,
+            params:[{lat:res.latitude,lng:res.longitude}]
+        });
+
         yield put({
             type:actionTypes.SAVE_LOCATION,
             payload:{latitude:res.latitude,longitude:res.longitude}
         });
-            wx.error(function(res){
-                 console.log(res);
-            });
+
         }
         if(response.code===1){
-            window.location.href=`${response.data.url}?url=${window.location.href}`;
+            window.location.href=`${response.data.url}?url=${encodeURIComponent(window.location.href)}`;
         }else{
             yield put({
                 type: actionTypes.FETCH_INFO_DATA_SUCCESS,

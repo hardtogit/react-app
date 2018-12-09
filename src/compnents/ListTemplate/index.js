@@ -115,7 +115,9 @@ class Scroll extends Component{
     }
     addScroll(Element){
         Element.addEventListener('scroll',()=>{
-            this.props.onScroll(Element);
+            if(this.props.onScroll){
+                this.props.onScroll(Element);
+            }
             const Top=Element.scrollTop;
                   this.next(Top);
         });

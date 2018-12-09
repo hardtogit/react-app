@@ -12,6 +12,9 @@ import team from '../../assets/img/team.png';
 import client from '../../assets/img/client.png';
 import introduce from '../../assets/img/introduce.png';
 import arrowRight from '../../assets/img/arrowRight.png';
+import intelligent from '../../assets/img/intelligent.png';
+import inviteIntelligent from '../../assets/img/inviteIntelligent.png';
+import moneyOpen from '../../assets/img/moneyOpen.png';
 import styles from './index.module.scss';
 
 class Index extends Component {
@@ -103,6 +106,20 @@ class Index extends Component {
                         <div className={styles.item}>
                             <img className={styles.img} src={introduce} alt=""/>
                             <div className={styles.text}>平台介绍</div>
+                        </div>
+                    </div>
+                    <div className={styles.row}>
+                        <div className={styles.item} onClick={()=>push('/inform')}>
+                            <img className={styles.img} src={intelligentTeam} alt=""/>
+                            <div className={styles.text}>达人团队</div>
+                        </div>
+                        <div className={styles.item} onClick={()=>push('/teach')}>
+                            <img className={styles.img} src={intelligentGeneralize} alt=""/>
+                            <div className={styles.text}>达人推广金</div>
+                        </div>
+                        <div className={styles.item}>
+                            <img className={styles.img} src={inviteIntelligent} alt=""/>
+                            <div className={styles.text}>邀请达人</div>
                         </div>
                     </div>
                 </div>

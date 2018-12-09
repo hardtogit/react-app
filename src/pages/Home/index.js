@@ -29,14 +29,14 @@ class Index extends Component {
         }else if(location){
             this.location={lng:location.longitude,lat:location.latitude};
             this.props.getList({lng:location.longitude,lat:location.latitude,tags:this.state.tags});
-            this.props.getCityName({lng:location.longitude,lat:location.latitude,tags:this.state.tags});
+            // this.props.getCityName({lng:location.longitude,lat:location.latitude,tags:this.state.tags});
         }
     }
     componentWillReceiveProps({location}){
          if(location&&location!==this.props.location){
              this.location={lng:location.longitude,lat:location.latitude};
              this.props.getList({lng:location.longitude,lat:location.latitude,tags:this.state.tags});
-             this.props.getCityName({lng:location.longitude,lat:location.latitude,tags:this.state.tags});
+             // this.props.getCityName({lng:location.longitude,lat:location.latitude,tags:this.state.tags});
          }
     }
     handleTabChange=(index)=>{
