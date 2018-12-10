@@ -41,7 +41,11 @@ const store=createStore(reducer,composeEnhancers(applyMiddleware(sagaMiddleware,
 const history = syncHistoryWithStore(hashHistory, store);
 sagaMiddleware.run(rootSaga);
 
-// const queryParams = qs.parse(window.location.href.split('?')[1],{ ignoreQueryPrefix: true });
+const queryParams = qs.parse(window.location.href.split('?')[1],{ ignoreQueryPrefix: true });
+//保存用户taken
+if(queryParams.token){
+    sessionStorage.setItem('token',queryParams.token);
+}
 //获取授权配置
 store.dispatch({
     type:actionTypes.JSSDK_CONFIG_INFO,
