@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import classNames from 'classnames';
-import {goBack} from 'react-router-redux';
+import {goBack,push} from 'react-router-redux';
 import {clientHeight,clientWidth} from '../../utils';
 import ListTemplate from '../../compnents/ListTemplate';
 import * as actionTypes from '../../actions/actionTypes';
@@ -35,7 +35,7 @@ class Index extends Component {
         });
     };
     render() {
-        const {list,getList,pending,pageEnd} = this.props;
+        const {list,getList,pending,pageEnd,push} = this.props;
         const {fixedBar,activeTab}=this.state;
         let tabParam={};
         if(activeTab!==0){
@@ -134,6 +134,7 @@ class Index extends Component {
                             list.map((value,index)=>{
                                 arr.push(<div className={styles.store} key={index}>
                                     <GoodsCard
+                                        onClick={()=>{push(`/storeDetail/${value.id}`);}}
                                         key={index}
                                         img={value.cover}
                                         title={value.storename}
@@ -161,6 +162,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     pop(url) {
         dispatch(goBack(url));
+    },
+    push(url){
+        dispatch(push(url));
+
     },
     getList(data) {
         dispatch({

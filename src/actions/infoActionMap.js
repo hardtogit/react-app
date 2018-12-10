@@ -17,6 +17,10 @@ export default {
     [actionTypes.CITY_NAME_INFO]: {//获取城市名称
         apiFn: Fetch.cityNameInfo
     },
+    //附近
+    [actionTypes.STORE_INFO]: {
+        apiFn:  Fetch.storeInfo
+    },
     //我的
     [actionTypes.USER_INFO]: {//获取用户信息
         apiFn: Fetch.userInfo

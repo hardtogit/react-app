@@ -21,6 +21,10 @@ import GoodsDetail from './pages/Home/GoodsDetail';
 import Search from './pages/Home/Search';
 import Address from './pages/Home/Address';
 import Evaluate from './pages/Home/Evaluate';
+
+//附近
+import StoreDetail  from './pages/Near/StoreDetail';
+
 //我的
 import Withdraw from './pages/Me/Withdraw';
 import Collaborate from './pages/Me/Collaborate';
@@ -70,6 +74,9 @@ class App extends Component {
                   <Route path="search" component={Search} />
                   <Route path="address" component={Address} />
                   <Route path="evaluate/:id" component={Evaluate} />
+
+                  {/*附近*/}
+                  <Route path="storeDetail/:id" component={StoreDetail} />
 
                   {/*个人中心*/}
                   <Route path="withdraw" component={Withdraw} />

@@ -13,7 +13,6 @@ class Index extends Component {
     }
 
     componentDidMount() {
-
     }
     componentWillUnmount(){
         this.props.clear();
@@ -68,7 +67,7 @@ const mapDispatchToProps = (dispatch) => ({
     },
     clear(){
         dispatch({
-            type:actionType.GOODS_EVALUATE_LIST,
+            type:actionType.CLEAR_LIST_DATA,
             key:actionType.GOODS_EVALUATE_LIST
         });
     }

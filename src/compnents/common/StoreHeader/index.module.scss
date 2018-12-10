@@ -1,0 +1,35 @@
+.panel{
+  background-color: #fff;
+  padding-bottom: 0.1rem;
+  .img{
+    height: 1.78rem;
+    position: relative;
+    .swipe {
+      overflow: hidden;
+      height: 100%;
+      position: relative;
+      .swipeWrap {
+        overflow: hidden;
+        height: 100%;
+        position: relative;
+        & > div {
+          float: left;
+          height: 100%;
+          width: 100%;
+          position: relative;
+          img{
+            height: 100%;
+            width: 100%;
+            display: block;
+          }
+        }
+      }
+    }
+  }
+  .pagination{
+    position: absolute;
+    right: 0.1rem;
+    bottom:0.06rem;
+    color: #fff;
+  }
+}

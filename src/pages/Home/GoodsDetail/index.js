@@ -8,7 +8,9 @@ import common  from '../../../assets/img/common.png';
 import goodsDetail from '../../../assets/img/goodsDetail.png';
 import home from '../../../assets/img/home.png';
 import service from '../../../assets/img/service.png';
+import locationIcon from '../../../assets/img/locationIcon.png';
 import GoodsHeader from '../../../compnents/common/GoodsHeader';
+import GoodsCard  from '../../../compnents/common/GoodsCard';
 import StarBar from '../../../compnents/StarBar';
 import BuyPopup from './BuyPopup';
 import styles from './index.module.scss';
@@ -16,9 +18,10 @@ class Index extends Component {
     componentDidMount() {
         const {params:{id},getDetail} = this.props;
         getDetail({gid:id});
+        this.props.getList();
     }
     render() {
-        const {detail,push}=this.props;
+        const {detail,push,goodsInfo}=this.props;
         const labels=['24小时前随时退'];
         if(detail.isbookin===1){
             labels.push('需提前预约');
@@ -82,9 +85,38 @@ class Index extends Component {
                        </div>
                    </div>
                </div>
+               <div className={styles.locationContainer}>
+               <BaseText label={<div><img
+                   src={locationIcon}
+                   className={styles.location} alt=""
+                                     />{detail.address}</div>} borderType="five"
+                   containerStyle={{padding:'0'}}
+               />
+               </div>
                <img className={styles.title} src={goodsDetail} alt=""/>
-               <div>{detail.info}</div>
+               <div className={styles.detail} dangerouslySetInnerHTML={{
+                   __html: detail.info
+               }}
+               />
                <img className={styles.subTitle} src={common} alt=""/>
+
+               <div className={styles.recommend}>
+                   <div className={styles.rcTitle}>为你推荐精品</div>
+                       {goodsInfo.map((goods,index)=>{
+                           return(
+                               <div className={styles.store} key={index}>
+                               <GoodsCard
+                                   onClick={()=>{push(`/goodsDetail/${goods.id}`);}}
+                                   key={index}
+                                   img={goods.cover}
+                                   title={goods.goodsname}
+                                   starNum={goods.totalrate}
+                               />
+                               </div>
+                           );
+
+                       })}
+               </div>
                <div className={styles.bottom}>
                    <div className={styles.left}>
                        <div className={styles.home} onClick={()=>{
@@ -107,7 +139,8 @@ class Index extends Component {
     }
 }
 const mapStateToProps=({infoData})=>({
-    detail:infoData.getIn([actionTypes.GOODS_DETAIL_INFO,'data']).data||{}
+    detail:infoData.getIn([actionTypes.GOODS_DETAIL_INFO,'data']).data||{},
+    goodsInfo:infoData.getIn([actionTypes.GOODS_INFO,'data']).data||[]
     });
 const mapDispatchToProps=(dispatch)=>{
     return{
@@ -118,6 +151,12 @@ const mapDispatchToProps=(dispatch)=>{
             dispatch({
                 type:actionTypes.GOODS_DETAIL_INFO,
                 params:[data]
+            });
+        },
+        getList(location){
+            dispatch({
+                type:actionTypes.GOODS_INFO,
+                params:[{...location,page:1,limit:10}]
             });
         }
     };

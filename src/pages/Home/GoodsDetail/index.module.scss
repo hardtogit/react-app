@@ -89,11 +89,56 @@
     }
   }
 }
+.locationContainer{
+  background-color: #fff;
+  padding: 0 0.1rem;
+  .location{
+    width: 0.10rem;
+    display: inline-block;
+    position: relative;
+    top:0.02rem;
+    margin-right: 0.02rem;
+  }
+}
 .title{
   width: 1.34rem;
   height: 0.17rem;
   display: block;
   margin: 0.15rem auto;
+}
+.detail{
+  padding: 0.1rem;
+  background-color: #fff;
+  img{
+    display: block;
+    width: 100%!important;
+  }
+}
+.recommend{
+  //padding: 0 0.10rem;
+  //margin-top:0.15rem;
+  .rcTitle{
+    text-align: left;
+    color: #111;
+    padding-left: 0.1rem;
+    padding-bottom: 0.1rem;
+  }
+  .store{
+    margin-bottom: 0.10rem;
+    &:nth-child(2n+1){
+      padding-right: 0.05rem;
+      padding-left: 0.1rem;
+      width: 50%;
+      float: left;
+    }
+    &:nth-child(2n){
+      width: 50%;
+      padding-left: 0.05rem;
+      padding-right: 0.1rem;
+      float: left;
+    }
+  }
+
 }
 .subTitle{
   width: 1.605rem;

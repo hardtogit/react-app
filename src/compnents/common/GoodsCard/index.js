@@ -1,9 +1,9 @@
-import React from 'react'
-import StarBar from '../../StarBar'
-import styles from  './index.module.scss'
-export default ({img,title,starNum,distance})=>{
+import React from 'react';
+import StarBar from '../../StarBar';
+import styles from  './index.module.scss';
+export default ({img,title,starNum,distance,onClick})=>{
     return(
-       <div className={styles.card}>
+       <div className={styles.card} onClick={()=>{onClick&&onClick();}}>
            <img className={styles.img} src={img} alt=""/>
            <div className={styles.title}>{title}</div>
            <div className={styles.footer}>
@@ -15,6 +15,5 @@ export default ({img,title,starNum,distance})=>{
                </div>
            </div>
        </div>
-
-    )
-}
+    );
+};

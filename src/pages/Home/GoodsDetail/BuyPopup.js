@@ -3,6 +3,7 @@ import Popup from '../../../compnents/Popup';
 import close from '../../../assets/img/close.png';
 import checked from '../../../assets/img/checked.png';
 import classNames from 'classnames';
+import toast from '../../../utils/toast';
 import styles from './index.module.scss';
 const  returnFloat=(value)=>{
      value=Math.round(parseFloat(value)*100)/100;
@@ -23,7 +24,10 @@ class Index extends Component{
         super(props);
         this.state = {
             number: 1,
-            goodsIndex: 1
+            goodsIndex: 0,
+            selectAttr:{
+
+            }
         };
         this.goods = {};
         this.payment = '0.00';
@@ -31,16 +35,53 @@ class Index extends Component{
 
     componentWillReceiveProps({detail}){
         if(detail.minpretium){
-            detail.spec.map((value,index)=>{
-                if(value.pretium===detail.minpretium){
-                    this.goods=value;
+            const attr=detail.attr;
+            let obj={};
+            attr.map((key)=>{
+               obj[key.key]=detail.spec[0][key.key];
+            });
+            console.log(obj,1111);
+            this.goods=detail.spec[0];
+            this.setState({
+                selectAttr:obj
+            });
+        }
+    }
+    handleSelectAttr=(key,value)=>{
+        const {detail}=this.props;
+        let  {selectAttr}=this.state;
+        selectAttr={...selectAttr,[key]:value};
+        console.log(key,value);
+        let flag=false;
+        detail.spec.map((goods, index)=>{
+            let dFlag=true;
+            Object.keys(selectAttr).map((key)=>{
+                if(goods[key]!==selectAttr[key]){
+                    dFlag=false;
+                }
+            });
+            if(dFlag){
+                flag=true;
+                console.log(Object.keys(selectAttr).length,detail.attr.length);
+                if(Object.keys(selectAttr).length===detail.attr.length){
                     this.setState({
                         goodsIndex:index
                     });
                 }
+            }
+        });
+        if(flag){
+            this.setState({
+                selectAttr
+
             });
+        }else{
+            this.setState({
+                selectAttr:{[key]:value}
+            });
+            toast('您选择的组合不存在，请重新选择');
         }
-    }
+    };
     show=()=>{
        this.popup.show();
     };
@@ -48,6 +89,10 @@ class Index extends Component{
        this.popup.hidden();
     };
     add=()=>{
+        if(this.state.number===this.goods.stocks ){
+            toast(`库存不足!最多只能购买${this.state.number}份`);
+            return;
+        }
         this.setState((state)=>{
             return{
                 number:state.number+1
@@ -63,7 +108,7 @@ class Index extends Component{
     };
     render(){
         const {number}=this.state;
-        const {goodsIndex}=this.state;
+        const {goodsIndex,selectAttr}=this.state;
         const {detail}=this.props;
         if(detail.spec){
             this.goods=detail.spec[goodsIndex];
@@ -94,22 +139,26 @@ class Index extends Component{
                            </div>
                        </div>
                    </div>
-                    <div className={styles.propertyContainer}>
-                        <div className={styles.propertyTitle}>
-                            颜色
-                        </div>
-                        <div className={styles.propertyName}>红色</div>
-                        <div className={styles.propertyName}>红色</div>
-                        <div className={styles.propertyName}>红色</div>
-                    </div>
-                    <div className={styles.propertyContainer}>
-                        <div className={styles.propertyTitle}>
-                            颜色
-                        </div>
-                        <div className={classNames([styles.propertyName,styles.active])}>红色</div>
-                        <div className={styles.propertyName}>红色</div>
-                        <div className={styles.propertyName}>红色</div>
-                    </div>
+                    {
+                        detail.attr&&detail.attr.map((value,i)=>{
+                            return(
+                                <div key={i} className={styles.propertyContainer}>
+                                    <div className={styles.propertyTitle}>
+                                        {value.label}
+                                    </div>
+                                    {value.values.map((item,index)=>{
+                                        return(<div key={index}
+                                            className={classNames([styles.propertyName,selectAttr[value.key]===item.name&&styles.active])}
+                                            onClick={()=>{
+                                                this.handleSelectAttr(value.key,item.name);
+                                            }}
+                                               >{item.name}</div>);
+                                    })}
+                                </div>
+                            );
+
+                        })
+                    }
                     <div className={styles.numFlex}>
                         <div className={styles.left}>
                             购买数量
