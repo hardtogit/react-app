@@ -9,6 +9,7 @@ export const GOODS_INFO = 'GOODS_INFO';
 export const GOODS_DETAIL_INFO='GOODS_DETAIL_INFO';
 export const GOODS_EVALUATE_LIST='GOODS_EVALUATE_LIST';
 export const CITY_NAME_INFO='CITY_NAME_INFO';
+export const BANNER_INFO='BANNER_INFO';
 /**附近*/
 export const STORE_LIST='STORE_LIST';
 export const STORE_INFO='STORE_INFO';
@@ -22,6 +23,7 @@ export const TEAM_LIST = 'TEAM_LIST';
 export const CLIENT_LIST = 'CLIENT_LIST';
 export const STORE_INVITE_INFO = 'STORE_INVITE_INFO';
 export const JSSDK_CONFIG_INFO = 'JSSDK_CONFIG_INFO';
+export const ORDER_LIST = 'ORDER_LIST';
 
 /**公共*/
 export const FETCH_INFO_DATA_SUCCESS='FETCH_INFO_DATA_SUCCESS';

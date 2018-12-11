@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
+import wx from 'weixin-js-sdk';
 import BaseText from '../../../compnents/BaseText';
 import * as actionTypes from '../../../actions/actionTypes';
 import phone from '../../../assets/img/phone.png';
@@ -19,6 +20,17 @@ class Index extends Component {
         const {params:{id},getDetail} = this.props;
         getDetail({gid:id});
         this.props.getList();
+    }
+    openLocation=(location)=>{
+        console.log('ss');
+        wx.openLocation({
+            latitude: location.lat, // 纬度，浮点数，范围为90 ~ -90
+            longitude: location.lng, // 经度，浮点数，范围为180 ~ -180。
+            name: location.name, // 位置名
+            address: '', // 地址详情说明
+            scale: 20, // 地图缩放级别,整形值,范围从1~28。默认为最大
+            infoUrl: '' // 在查看位置界面底部显示的超链接,可点击跳转
+        });
     }
     render() {
         const {detail,push,goodsInfo}=this.props;
@@ -86,10 +98,12 @@ class Index extends Component {
                    </div>
                </div>
                <div className={styles.locationContainer}>
-               <BaseText label={<div><img
-                   src={locationIcon}
-                   className={styles.location} alt=""
-                                     />{detail.address}</div>} borderType="five"
+               <BaseText
+                   onClick={()=>this.openLocation({lng:detail.lng,lat:detail.lat,name:detail.address})}
+                   label={<div><img
+                       src={locationIcon}
+                       className={styles.location} alt=""
+                               />{detail.address}</div>} borderType="five"
                    containerStyle={{padding:'0'}}
                />
                </div>

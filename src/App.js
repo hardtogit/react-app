@@ -48,12 +48,15 @@ sagaMiddleware.run(rootSaga);
 const queryParams = qs.parse(window.location.href.split('?')[1],{ ignoreQueryPrefix: true });
 //保存用户taken
 if(queryParams.token){
-    sessionStorage.setItem('token',queryParams.token);
+    localStorage.setItem('token',queryParams.token);
 }
 //获取授权配置
 store.dispatch({
     type:actionTypes.JSSDK_CONFIG_INFO,
     params:[{url:window.location.href}]
+});
+store.dispatch({
+    type:actionTypes.USER_INFO
 });
 
 class App extends Component {
@@ -90,7 +93,6 @@ class App extends Component {
                   <Route path="awardAccept" component={AwardAccept} />
                   <Route path="awardWait" component={AwardWait} />
                   <Route path="client" component={Client} />
-
               </Route>
               <Redirect from="/*" to="/" />
           </Router>

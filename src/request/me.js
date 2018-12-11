@@ -11,5 +11,6 @@ const requests = (Fetch) => {
     Fetch.clientList = (page,limit,arg) => {   return Fetch('center.invite/recommend', 'POST',{page,limit,...arg});};
     Fetch.storeInviteInfo = (arg) => {   return Fetch('stores.invite/storeInvite', 'POST',{...arg});};
     Fetch.jsSdkConfigInfo = (arg) => {   return Fetch('general/user.sdk/get', 'POST',{...arg});};
+    Fetch.orderList = (page,limit,arg) => {return Fetch('orders.show/orderList', 'POST',{page,limit,...arg});};
 };
 export default requests;

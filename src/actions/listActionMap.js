@@ -27,5 +27,9 @@ export default {
     },
     [actionTypes.CLIENT_LIST]: {
         apiFn:  Fetch.clientList
+    },
+    [actionTypes.ORDER_LIST]: {
+        apiFn:  Fetch.orderList
     }
+
 };

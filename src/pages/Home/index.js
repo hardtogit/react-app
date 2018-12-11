@@ -22,7 +22,8 @@ class Index extends Component {
         this.location={};
     }
     componentDidMount(){
-        const {location,city}=this.props;
+        const {location,city,getBanner}=this.props;
+        getBanner();
         if(city){
             this.location={cityid:city.cityid};
             this.props.getList({cityid:city.cityid,tags:this.state.tags});
@@ -46,7 +47,7 @@ class Index extends Component {
         this.props.getList({...this.location,tags:index});
     };
     render() {
-        const {goodsInfo,push,city,cityName}=this.props;
+        const {goodsInfo,push,city,cityName,bannerInfo}=this.props;
         const {tags}=this.state;
         let cityText='定位中...';
         if(city&&city.name){
@@ -57,37 +58,35 @@ class Index extends Component {
         return (
            <div className={styles.content}>
                <div className={styles.search}>
-                   <div className={styles.text} onClick={()=>push('/Address')}>{cityText}</div>
+                   <div className={styles.text} onClick={()=>push('/address')}>{cityText}</div>
                    <div className={styles.input} data-role="vehicleSearch" onClick={()=>push('/search')}>
                        <img className={styles.img} src={search} alt=""/>
                        输入关键词
                    </div>
                </div>
                <Swiper>
-                   <div key={1} className={styles.slide}>
-                       <img className={styles.img} src="https://img.meituan.net/msmerchant/799a8a2c28aae03e02b3b906515ac36b1345678.jpg@750w_320h_1e_1c" />
-                   </div>
-                   <div key={2} className={styles.slide}>
-                       <img className={styles.img} src="https://img.meituan.net/msmerchant/799a8a2c28aae03e02b3b906515ac36b1345678.jpg@750w_320h_1e_1c" />
-                   </div>
-                   <div key={3} className={styles.slide}>
-                       <img className={styles.img} src="https://img.meituan.net/msmerchant/799a8a2c28aae03e02b3b906515ac36b1345678.jpg@750w_320h_1e_1c" />
-                   </div>
+                   {bannerInfo&&bannerInfo.map((banner,i)=>{
+                       return(
+                           <div key={i} className={styles.slide} onClick={()=>{push(banner.href);}}>
+                               <img className={styles.img} src={banner.photo} />
+                           </div>
+                       );
+                   })}
                </Swiper>
                <div className={styles.menus}>
-                   <div className={styles.menu}>
+                   <div className={styles.menu} onClick={()=>push('/home/near?tab=1')}>
                        <img className={styles.img} src={hotel} alt=""/>
                        <div className={styles.text}>酒店</div>
                    </div>
-                   <div className={styles.menu}>
+                   <div className={styles.menu} onClick={()=>push('/home/near?tab=2')}>
                        <img className={styles.img} src={repast} alt=""/>
                        <div className={styles.text}>餐饮</div>
                    </div>
-                   <div className={styles.menu}>
+                   <div className={styles.menu} onClick={()=>push('/home/near?tab=3')}>
                        <img className={styles.img} src={travel} alt=""/>
                        <div className={styles.text}>旅游</div>
                    </div>
-                   <div className={styles.menu}>
+                   <div className={styles.menu} onClick={()=>push('/home/near?tab=4')}>
                        <img className={styles.img} src={relaxation} alt=""/>
                        <div className={styles.text}>休闲</div>
                    </div>
@@ -130,7 +129,8 @@ const mapStateToProps=({global,infoData})=>({
     location:global.location,
     city:global.city,
     cityName:infoData.getIn([actionTypes.CITY_NAME_INFO,'data']).data||{},
-    goodsInfo:infoData.getIn([actionTypes.GOODS_INFO,'data']).data||[]
+    goodsInfo:infoData.getIn([actionTypes.GOODS_INFO,'data']).data||[],
+    bannerInfo:infoData.getIn([actionTypes.BANNER_INFO,'data']).data||[]
     })
 
 ;
@@ -149,6 +149,11 @@ const mapDispatchToProps=(dispatch)=>{
             dispatch({
                 type:actionTypes.GOODS_INFO,
                 params:[{...location,page:1,limit:10}]
+            });
+        },
+        getBanner(){
+            dispatch({
+                type:actionTypes.BANNER_INFO
             });
         },
         getCityName(location){

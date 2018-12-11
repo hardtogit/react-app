@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
 import Swipe from 'swipe-js-iso';
-import labelIcon from '../../../assets/img/labelIcon.png';
 import styles from  './index.module.scss';
 class Index extends Component{
     constructor(props){
@@ -11,7 +10,7 @@ class Index extends Component{
     }
     componentDidMount(){
         const $this=this;
-        let mySwipe = Swipe(this.mySwipe,{
+        Swipe(this.mySwipe,{
             speed: 400,
             auto: 3000,
             continuous: true,

@@ -14,10 +14,11 @@ class Index extends Component {
         super(props);
         this.state={
             fixedBar:false,
-            activeTab:0
+            activeTab:this.props.location.query.tab&&parseInt(this.props.location.query.tab)||0
         };
     }
-    componentDidMount(){
+    componentWillUnmount(){
+        this.props.clear();
     }
     changeTab=(index)=> {
         const {fixedBar}=this.state;

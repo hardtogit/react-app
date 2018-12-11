@@ -1,10 +1,12 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
+import wx from 'weixin-js-sdk';
 import BaseText from '../../../compnents/BaseText';
 import * as actionTypes from '../../../actions/actionTypes';
 import phone from '../../../assets/img/phone.png';
 import StoreHeader from '../../../compnents/common/StoreHeader';
+import GoodsCard from '../../../compnents/common/GoodsCard';
 import StarBar from '../../../compnents/StarBar';
 import locationIcon from '../../../assets/img/locationIcon.png';
 import styles from './index.module.scss';
@@ -13,6 +15,16 @@ class Index extends Component {
         const {params:{id},getDetail} = this.props;
         getDetail({store_id:id});
     }
+    openLocation=(location)=>{
+        wx.openLocation({
+            latitude: location.lat, // 纬度，浮点数，范围为90 ~ -90
+            longitude: location.lng, // 经度，浮点数，范围为180 ~ -180。
+            name: location.name, // 位置名
+            address: '', // 地址详情说明
+            scale: 18, // 地图缩放级别,整形值,范围从1~28。默认为最大
+            infoUrl: '' // 在查看位置界面底部显示的超链接,可点击跳转
+        });
+    };
     render() {
         const {detail,push}=this.props;
         const labels=['24小时前随时退'];
@@ -21,9 +33,13 @@ class Index extends Component {
         }
         return (
            <div className={styles.content}>
+               <div className={styles.bannerContainer}>
+               {detail.plist&&detail.plist.length&&
                <StoreHeader
-                   imgs={detail.plist||[]}
+                   imgs={detail.plist}
                />
+               }
+               </div>
                <div className={styles.storeInfo}>
                    <div className={styles.container}>
                        <div className={styles.flex}>
@@ -37,30 +53,30 @@ class Index extends Component {
                        </div>
                    </div>
                </div>
-               <BaseText label={<div><img className={styles.location} src={locationIcon} alt=""/>{detail.address}</div>} />
-               {detail.goods_rate&&<div className={styles.evaluate}>
+               <BaseText onClick={()=>this.openLocation({lng:detail.lng,lat:detail.lat,name:detail.address})} label={<div><img className={styles.location} src={locationIcon} alt=""/>{detail.address}</div>} />
+               {(detail.rates&&detail.rates.length)&&<div className={styles.evaluate}>
                    <div className={styles.header}>
                        <div className={styles.left}>评价({detail.ratenum})</div>
-                       <div className={styles.right} ><div className={styles.stars}><StarBar starNum={detail.goods_rate.rates}/></div></div>
+                       <div className={styles.right} ><div className={styles.stars}><StarBar starNum={detail.rates[0].rates}/></div></div>
                    </div>
                    <div className={styles.user}>
                        <div className={styles.left}>
-                           <img src={detail.goods_rate.headimgurl} alt=""/>
+                           <img src={detail.rates[0].headimgurl} alt=""/>
                        </div>
                        <div className={styles.center} >
                            <div className={styles.name}>
-                               单你
+                               {detail.rates[0].nickname}
                            </div>
                            <div className={styles.star}>
-                               <StarBar starNum={detail.goods_rate.rates}/>
+                               <StarBar starNum={detail.rates[0].rates}/>
                            </div>
                        </div>
                        <div className={styles.right}>
-                           {detail.goods_rate.createtime}
+                           {detail.rates[0].createtime}
                        </div>
                    </div>
                    <div className={styles.content}>
-                       {detail.goods_rate.ratecontent}
+                       {detail.rates[0].ratecontent}
                    </div>
                    <div className={styles.more}>
                        <BaseText label="查看全部" borderType="five"
@@ -72,6 +88,23 @@ class Index extends Component {
                    </div>
 
                </div>}
+               <div className={styles.recommend}>
+                   <div className={styles.rcTitle}>为你推荐精品</div>
+                   {detail.goods&&detail.goods.map((goods,index)=>{
+                       return(
+                           <div className={styles.store} key={index}>
+                               <GoodsCard
+                                   onClick={()=>{push(`/goodsDetail/${goods.id}`);}}
+                                   key={index}
+                                   img={goods.cover}
+                                   title={goods.goodsname}
+                                   starNum={goods.totalrate}
+                               />
+                           </div>
+                       );
+
+                   })}
+               </div>
            </div>
         );
     }

@@ -37,8 +37,8 @@ const Fetch = (url, type, data={}, headers) => {
           delete options.headers;
       }
       else {
-          if(sessionStorage.getItem('token')){
-              data={...data,token:sessionStorage.getItem('token')};
+          if(localStorage.getItem('token')){
+              data={...data,token:localStorage.getItem('token')};
           }
           options.body =qs.stringify(data);
        }

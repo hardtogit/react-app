@@ -36,6 +36,8 @@ class Index extends Component{
                  timeOut=0;
             }
         }
+        animateClass='';
+        timeOut=0;
         this.router=routing.locationBeforeTransitions.pathname;
         console.log(this.router);
         return(

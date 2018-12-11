@@ -11,6 +11,9 @@
   margin-right: 0.02rem;
 
 }
+.bannerContainer{
+  height: 1.78rem;
+}
 .evaluate{
   background-color: #fff;
   margin-top: 0.1rem;
@@ -96,5 +99,29 @@
     }
   }
 }
+.recommend{
+  .rcTitle{
+    text-align: left;
+    color: #111;
+    padding-left: 0.1rem;
+    padding-bottom: 0.1rem;
+    margin-top: 0.1rem;
+  }
+  .store{
+    margin-bottom: 0.10rem;
+    &:nth-child(2n+1){
+      padding-right: 0.1rem;
+      padding-left: 0.05rem;
+      width: 50%;
+      float: left;
+    }
+    &:nth-child(2n){
+      width: 50%;
+      padding-left: 0.1rem;
+      padding-right: 0.05rem;
+      float: left;
+    }
+  }
 
+}
 
